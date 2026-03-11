@@ -1,0 +1,10 @@
+accept = [200, 206, 429]
+exclude = [
+  "^mailto:",
+]
+include_fragments = true
+max_cache_age = "1d"
+max_retries = 2
+retry_wait_time = 2
+timeout = 20
+user_agent = "lychee/carl-dev-flow-skills"

@@ -1,0 +1,107 @@
+name: CI
+
+on:
+  pull_request:
+    paths:
+      - "**/*.md"
+      - "**/*.py"
+      - ".github/workflows/**"
+      - ".markdownlint-cli2.jsonc"
+      - ".lychee.toml"
+  push:
+    branches:
+      - main
+    paths:
+      - "**/*.md"
+      - "**/*.py"
+      - ".github/workflows/**"
+      - ".markdownlint-cli2.jsonc"
+      - ".lychee.toml"
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Run workflow skill drift checker
+        run: python3 skills/carl-dev-flow-orchestrator/scripts/check-workflow-skills.py
+
+      - name: Enforce repository markdown and template conventions
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          root = Path(".")
+          skill_files = sorted(root.glob("skills/*/SKILL.md"))
+          template_files = sorted(root.glob("skills/*/templates/*.md"))
+          bounded_templates = {
+              "minimal-zh.md",
+              "requirements-draft.md",
+              "tech-spec-draft.md",
+              "adr-template.md",
+              "task-plan.md",
+              "review-memo.md",
+          }
+
+          def fail(message: str) -> None:
+              raise SystemExit(f"FAIL: {message}")
+
+          for path in skill_files:
+              lines = path.read_text(encoding="utf-8").splitlines()
+              for index, line in enumerate(lines, start=1):
+                  if line.startswith("# "):
+                      fail(f"{path}:{index} uses '#'; SKILL.md must use '##' top-level headings")
+                  if line.rstrip() != line:
+                      fail(f"{path}:{index} has trailing whitespace")
+
+              if lines and lines[-1] == "":
+                  fail(f"{path} ends with a blank final line")
+
+          for path in template_files:
+              if path.name not in bounded_templates:
+                  continue
+              line_count = sum(1 for _ in path.open(encoding="utf-8"))
+              if line_count > 30:
+                  fail(f"{path} is {line_count} lines; templates must stay at 30 lines or fewer")
+
+          print(f"Validated {len(skill_files)} SKILL.md files and {len(template_files)} templates.")
+          PY
+
+      - name: Sanity-check drift checker script conventions
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path("skills/carl-dev-flow-orchestrator/scripts/check-workflow-skills.py")
+          text = path.read_text(encoding="utf-8")
+
+          checks = {
+              "shebang": text.startswith("#!/usr/bin/env python3\n"),
+              "future annotations": "from __future__ import annotations" in text,
+              "pathlib usage": "from pathlib import Path" in text,
+              "fail helper": "def fail(" in text,
+          }
+
+          missing = [name for name, ok in checks.items() if not ok]
+          if missing:
+              raise SystemExit(f"FAIL: {path} is missing expected conventions: {', '.join(missing)}")
+
+          print("Drift checker script conventions look good.")
+          PY
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Lint Markdown
+        run: npx --yes markdownlint-cli2

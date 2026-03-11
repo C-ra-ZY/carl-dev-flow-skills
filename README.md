@@ -83,8 +83,8 @@ python3 skills/carl-dev-flow-orchestrator/scripts/check-workflow-skills.py
 Expected output:
 
 ```
-Workflow skill family check passed: 6 files verified, required wording present,
-forbidden wording absent, versions consistent.
+Workflow skill family check passed: 6 files verified, 8 templates validated,
+required wording present, forbidden wording absent, versions consistent.
 ```
 
 Requires **Python >= 3.9** (no third-party dependencies).

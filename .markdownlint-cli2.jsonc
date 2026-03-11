@@ -1,0 +1,24 @@
+{
+  "config": {
+    "MD012": false,
+    "MD013": false,
+    "MD024": false,
+    "MD029": false,
+    "MD032": false,
+    "MD033": false,
+    "MD040": false,
+    "MD041": false,
+    "MD060": false,
+    "MD047": false
+  },
+  "globs": [
+    "README.md",
+    "AGENTS.md",
+    "CONTRIBUTING.md",
+    "CHANGELOG.md",
+    "docs/**/*.md",
+    "skills/**/*.md",
+    "!.git/**",
+    "!node_modules/**"
+  ]
+}

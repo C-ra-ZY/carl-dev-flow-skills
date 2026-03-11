@@ -12,6 +12,12 @@ Python validation script.
 
 ```
 carl-dev-flow-skills/
+  .github/
+    workflows/
+      ci.yml                            # Drift checker + style checks + markdownlint
+      links.yml                         # Link validation (PR internal + weekly full)
+  .markdownlint-cli2.jsonc               # Markdownlint config scoped to repo files
+  .lychee.toml                           # Link checker config
   README.md                              # Project history and design rationale
   AGENTS.md                              # This file
   skills/
@@ -53,13 +59,29 @@ python3 skills/carl-dev-flow-orchestrator/scripts/check-workflow-skills.py
 
 The checker validates:
 - All six skill directories exist with a `SKILL.md`
-- Each `SKILL.md` has required YAML frontmatter keys
+- Each `SKILL.md` has required YAML frontmatter keys and required values
 - Versions are consistent across the family (currently `1.1.0`)
 - Required wording is present in each skill
 - Forbidden wording is absent
-- Expected template files exist in each stage skill's `templates/` directory
+- Expected Chinese invocation templates and stage skeleton templates exist
 There is no single-test mode — the script is all-or-nothing. Run it after every
 change to any `SKILL.md` file.
+
+## CI Workflows
+
+Two GitHub Actions workflows gate pull requests and monitor link health:
+
+- **`ci.yml`** — Runs on PRs and pushes to `main` when `*.md`, `*.py`, or CI
+  config files change. Steps: drift checker → SKILL.md style checks → template
+  size check → markdownlint.
+- **`links.yml`** — Checks internal links (fragment-aware) on PRs. Runs a full
+  external link check weekly (Monday 03:00 UTC).
+
+Configuration files:
+- `.markdownlint-cli2.jsonc` — scoped to repo Markdown files only (excludes
+  external directories)
+- `.lychee.toml` — link checker settings (accept codes, exclude patterns,
+  fragment validation)
 
 ## SKILL.md Format (Mandatory)
 
@@ -137,7 +159,7 @@ this. When bumping the version, update all six files in a single change.
   `zh_CN_INVOCATION.md` (Chinese invocation examples)
 - Structured templates (fill-in skeletons): `requirements-draft.md`,
   `tech-spec-draft.md`, `adr-template.md`, `task-plan.md`, `review-memo.md`
-- Templates are short (typically < 30 lines)
+- Templates are short (target <= 30 lines)
 
 ## Python Script Style (check-workflow-skills.py)
 

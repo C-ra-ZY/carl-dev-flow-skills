@@ -15,7 +15,6 @@
 ## Requirements
 
 (List each requirement. Consider using EARS syntax for testable requirements.)
-
 1. ...
 
 ## Acceptance conditions

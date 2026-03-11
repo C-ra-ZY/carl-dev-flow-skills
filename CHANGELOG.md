@@ -24,9 +24,12 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   are finalized before code changes)
 - EARS format guidance in requirements skill (optional ubiquitous/event-driven/
   state-driven/unwanted-behavior syntax patterns)
-- Drift checker now validates template file existence (5 templates across 4 skills)
+- Drift checker now validates template file existence (8 templates across 6 skills)
 - Drift checker now enforces new required wording for v1.1.0 additions
-
+- CI workflows: drift checker, SKILL.md style checks, markdownlint, and link
+  validation via GitHub Actions (`ci.yml`, `links.yml`)
+- Markdownlint configuration (`.markdownlint-cli2.jsonc`) scoped to repo files
+- Link checker configuration (`.lychee.toml`) with fragment validation
 
 ## [1.0.0] - 2025-01-01
 

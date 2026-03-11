@@ -64,6 +64,7 @@ Do not stop the loop until:
 Store review artifacts in `.carl/review/`:
 
 - `.carl/review/memo-NNN.md` — numbered review memos per iteration
+
 ## Default behavior when loaded
 
 The agent should:

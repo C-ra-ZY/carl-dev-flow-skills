@@ -84,7 +84,11 @@ EXPECTED = {
     },
 }
 
-FRONTMATTER_KEYS = ("name:", "description:", "version:", "compatibility:")
+FRONTMATTER_KEYS = ("name:", "description:", "version:", "compatibility:", "license:", "metadata:")
+SKILL_NAMES = tuple(EXPECTED.keys())
+EXPECTED_LICENSE = "CC-BY-4.0"
+EXPECTED_COMPATIBILITY = "opencode"
+METADATA_KEYS = ("audience:", "domain:")
 
 
 def fail(message: str) -> NoReturn:
@@ -100,6 +104,17 @@ def parse_frontmatter(text: str, path: Path) -> str:
     if len(parts) != 2:
         fail(f"{path}: missing frontmatter end")
     return parts[0]
+
+
+def extract_frontmatter_value(frontmatter: str, key: str, path: Path) -> str:
+    match = re.search(rf"^{re.escape(key)}:\s*(.+)$", frontmatter, re.MULTILINE)
+    if match is None:
+        fail(f"{path}: missing {key} value")
+
+    value = match.group(1).split("#", 1)[0].strip().strip('"').strip("'")
+    if not value:
+        fail(f"{path}: empty {key} value")
+    return value
 
 
 def ensure_version_consistency(versions: set[str]) -> None:
@@ -119,10 +134,23 @@ def check_file(skill_name: str, config: dict[str, list[str]]) -> str:
         if key not in frontmatter:
             fail(f"{path}: missing frontmatter key {key}")
 
-    match = re.search(r"^version:\s*(.+)$", frontmatter, re.MULTILINE)
-    if match is None:
-        fail(f"{path}: missing version value")
-    version = match.group(1).strip()
+    for key in METADATA_KEYS:
+        if key not in frontmatter:
+            fail(f"{path}: missing metadata key {key}")
+
+    name = extract_frontmatter_value(frontmatter, "name", path)
+    version = extract_frontmatter_value(frontmatter, "version", path)
+    compatibility = extract_frontmatter_value(frontmatter, "compatibility", path)
+    license_name = extract_frontmatter_value(frontmatter, "license", path)
+
+    if name != skill_name:
+        fail(f"{path}: frontmatter name {name!r} must match directory name {skill_name!r}")
+
+    if compatibility != EXPECTED_COMPATIBILITY:
+        fail(f"{path}: compatibility must be {EXPECTED_COMPATIBILITY!r}, got {compatibility!r}")
+
+    if license_name != EXPECTED_LICENSE:
+        fail(f"{path}: license must be {EXPECTED_LICENSE!r}, got {license_name!r}")
 
     for needle in config["required"]:
         if needle not in text:
@@ -136,11 +164,20 @@ def check_file(skill_name: str, config: dict[str, list[str]]) -> str:
 
 
 EXPECTED_TEMPLATES: dict[str, list[str]] = {
+    "carl-dev-flow-orchestrator": ["minimal-zh.md"],
+    "carl-dev-flow-stage-router": ["minimal-zh.md", "zh_CN_INVOCATION.md"],
     "carl-dev-flow-requirements": ["requirements-draft.md"],
     "carl-dev-flow-tech-spec": ["tech-spec-draft.md", "adr-template.md"],
     "carl-dev-flow-implementation": ["task-plan.md"],
     "carl-dev-flow-review-loop": ["review-memo.md"],
 }
+
+
+def check_chinese_templates() -> None:
+    for skill_name in SKILL_NAMES:
+        path = ROOT / skill_name / "templates" / "minimal-zh.md"
+        if not path.exists():
+            fail(f"missing expected Chinese template: {path}")
 
 
 def check_templates() -> None:
@@ -159,6 +196,7 @@ def main() -> int:
         versions.add(check_file(skill_name, config))
 
     ensure_version_consistency(versions)
+    check_chinese_templates()
     check_templates()
     print(
         f"Workflow skill family check passed: {len(EXPECTED)} files verified, "
