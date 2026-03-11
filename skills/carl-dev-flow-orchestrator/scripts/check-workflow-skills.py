@@ -1,0 +1,134 @@
+#!/usr/bin/env python3
+
+from __future__ import annotations
+
+import re
+import sys
+from pathlib import Path
+from typing import NoReturn
+
+ROOT = Path(__file__).resolve().parents[2]
+
+SKILL_VERSION = "1.0.0"
+
+EXPECTED = {
+    "carl-dev-flow-orchestrator": {
+        "required": [
+            f"version: {SKILL_VERSION}",
+            "let the user make the final decision",
+            "keep this skill short and structural",
+            "keep detailed stage procedures only in subskills",
+        ],
+        "forbidden": [
+            "requirements draft",
+            "technical spec draft",
+        ],
+    },
+    "carl-dev-flow-stage-router": {
+        "required": [
+            f"version: {SKILL_VERSION}",
+            "If no workflow artifacts exist yet, default to `requirements-development`.",
+        ],
+        "forbidden": [],
+    },
+    "carl-dev-flow-requirements": {
+        "required": [
+            f"version: {SKILL_VERSION}",
+            "This skill is the authoritative source for the detailed procedure of the `requirements-development` stage",
+            "stateful interaction behavior when conversations, edits, or branching flows exist",
+            "side effects, suppression rules, or failure semantics when external actions or notifications exist",
+        ],
+        "forbidden": [
+            "thread and edit behavior if messaging is involved",
+            "notification suppression or failure semantics if alerts are involved",
+        ],
+    },
+    "carl-dev-flow-tech-spec": {
+        "required": [
+            f"version: {SKILL_VERSION}",
+            "This skill is the authoritative source for the detailed procedure of the `technical-confirmation` stage",
+        ],
+        "forbidden": [],
+    },
+    "carl-dev-flow-implementation": {
+        "required": [
+            f"version: {SKILL_VERSION}",
+            "This skill is the authoritative source for the detailed procedure of the `development-execution` stage",
+            "`Hephaestus` reviews integrated changes in parallel",
+        ],
+        "forbidden": [],
+    },
+    "carl-dev-flow-review-loop": {
+        "required": [
+            f"version: {SKILL_VERSION}",
+            "This skill is the authoritative source for the detailed procedure of the `recursive-improvement` stage",
+            "code-review-expert",
+            "requesting-code-review",
+        ],
+        "forbidden": [],
+    },
+}
+
+FRONTMATTER_KEYS = ("name:", "description:", "version:", "compatibility:")
+
+
+def fail(message: str) -> NoReturn:
+    print(f"FAIL: {message}")
+    raise SystemExit(1)
+
+
+def parse_frontmatter(text: str, path: Path) -> str:
+    text = text.replace("\r\n", "\n")
+    if not text.startswith("---\n"):
+        fail(f"{path}: missing frontmatter start")
+    parts = text.split("\n---\n", 1)
+    if len(parts) != 2:
+        fail(f"{path}: missing frontmatter end")
+    return parts[0]
+
+
+def ensure_version_consistency(versions: set[str]) -> None:
+    if versions != {SKILL_VERSION}:
+        fail(f"version mismatch across workflow skills: {sorted(versions)} (expected {SKILL_VERSION})")
+
+
+def check_file(skill_name: str, config: dict[str, list[str]]) -> str:
+    path = ROOT / skill_name / "SKILL.md"
+    if not path.exists():
+        fail(f"missing expected file: {path}")
+
+    text = path.read_text(encoding="utf-8")
+    frontmatter = parse_frontmatter(text, path)
+
+    for key in FRONTMATTER_KEYS:
+        if key not in frontmatter:
+            fail(f"{path}: missing frontmatter key {key}")
+
+    match = re.search(r"^version:\s*(.+)$", frontmatter, re.MULTILINE)
+    if match is None:
+        fail(f"{path}: missing version value")
+    version = match.group(1).strip()
+
+    for needle in config["required"]:
+        if needle not in text:
+            fail(f"{path}: missing required text: {needle}")
+
+    for needle in config["forbidden"]:
+        if needle in text:
+            fail(f"{path}: contains forbidden text: {needle}")
+
+    return version
+
+
+def main() -> int:
+    versions = set()
+    for skill_name, config in EXPECTED.items():
+        versions.add(check_file(skill_name, config))
+
+    ensure_version_consistency(versions)
+    print("Workflow skill family check passed: 6 files verified, required wording present, forbidden wording absent, versions consistent.")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
