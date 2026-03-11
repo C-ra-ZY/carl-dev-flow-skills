@@ -56,15 +56,20 @@ skills/
   carl-dev-flow-requirements/       # Requirements-development procedure
     SKILL.md
     templates/minimal-zh.md
+    templates/requirements-draft.md
   carl-dev-flow-tech-spec/          # Technical-confirmation procedure
     SKILL.md
     templates/minimal-zh.md
+    templates/tech-spec-draft.md
+    templates/adr-template.md
   carl-dev-flow-implementation/     # Development-execution procedure
     SKILL.md
     templates/minimal-zh.md
+    templates/task-plan.md
   carl-dev-flow-review-loop/        # Recursive-improvement procedure
     SKILL.md
     templates/minimal-zh.md
+    templates/review-memo.md
 ```
 
 ## Verification

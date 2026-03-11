@@ -26,15 +26,20 @@ carl-dev-flow-skills/
     carl-dev-flow-requirements/          # Requirements-development stage procedure
       SKILL.md
       templates/minimal-zh.md
+      templates/requirements-draft.md    # Fill-in skeleton for requirements draft
     carl-dev-flow-tech-spec/             # Technical-confirmation stage procedure
       SKILL.md
       templates/minimal-zh.md
+      templates/tech-spec-draft.md       # Fill-in skeleton for tech spec draft
+      templates/adr-template.md          # MADR-derived decision record template
     carl-dev-flow-implementation/        # Development-execution stage procedure
       SKILL.md
       templates/minimal-zh.md
+      templates/task-plan.md             # Fill-in skeleton for task plan
     carl-dev-flow-review-loop/           # Recursive-improvement stage procedure
       SKILL.md
       templates/minimal-zh.md
+      templates/review-memo.md           # Fill-in skeleton for review memo
 ```
 
 ## Build / Lint / Test Commands
@@ -49,10 +54,10 @@ python3 skills/carl-dev-flow-orchestrator/scripts/check-workflow-skills.py
 The checker validates:
 - All six skill directories exist with a `SKILL.md`
 - Each `SKILL.md` has required YAML frontmatter keys
-- Versions are consistent across the family (currently `1.0.0`)
+- Versions are consistent across the family (currently `1.1.0`)
 - Required wording is present in each skill
 - Forbidden wording is absent
-
+- Expected template files exist in each stage skill's `templates/` directory
 There is no single-test mode — the script is all-or-nothing. Run it after every
 change to any `SKILL.md` file.
 
@@ -64,7 +69,7 @@ Every skill file uses this structure:
 ---
 name: carl-dev-flow-{slug}
 description: One-line description of the skill.
-version: 1.0.0
+version: 1.1.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -130,7 +135,9 @@ this. When bumping the version, update all six files in a single change.
 - Chinese templates live in `templates/` subdirectory per skill
 - Template filenames: `minimal-zh.md` (minimal Chinese prompt) or
   `zh_CN_INVOCATION.md` (Chinese invocation examples)
-- Templates are short (typically < 10 lines)
+- Structured templates (fill-in skeletons): `requirements-draft.md`,
+  `tech-spec-draft.md`, `adr-template.md`, `task-plan.md`, `review-memo.md`
+- Templates are short (typically < 30 lines)
 
 ## Python Script Style (check-workflow-skills.py)
 

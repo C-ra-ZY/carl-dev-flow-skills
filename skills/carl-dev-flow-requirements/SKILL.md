@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-requirements
 description: Run the requirements-development stage where the user, Sisyphus, and Hephaestus converge on a final requirements document through draft, review, and revision.
-version: 1.0.0
+version: 1.1.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -64,6 +64,27 @@ Do not call the document final until:
 - edge cases are either resolved or explicitly deferred
 - the user confirms the behavior matches intent
 - both `Sisyphus` and `Hephaestus` have had a review opportunity
+
+
+## Artifact location
+
+Store requirements artifacts in `.carl/requirements/`:
+
+- `.carl/requirements/draft.md`
+- `.carl/requirements/revised.md`
+- `.carl/requirements/final.md`
+
+## Requirements format guidance
+
+For testable requirements, consider EARS (Easy Approach to Requirements Syntax):
+
+- Ubiquitous: "The `<system>` shall `<response>`."
+- Event-driven: "When `<trigger>`, the `<system>` shall `<response>`."
+- State-driven: "While `<state>`, the `<system>` shall `<response>`."
+- Unwanted: "If `<condition>`, then the `<system>` shall `<response>`."
+
+Each EARS requirement maps directly to one acceptance criterion.
+This format is recommended but not mandatory.
 
 ## Default behavior when loaded
 

@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-review-loop
 description: Run repeated code review, discussion, repair, and re-review cycles until Sisyphus, Hephaestus, and the user agree the code is ready for delivery.
-version: 1.0.0
+version: 1.1.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -58,6 +58,12 @@ Do not stop the loop until:
 - remaining issues are explicitly deferred and accepted
 - `Sisyphus`, `Hephaestus`, and the user all agree the code is at delivery level
 
+
+## Artifact location
+
+Store review artifacts in `.carl/review/`:
+
+- `.carl/review/memo-NNN.md` — numbered review memos per iteration
 ## Default behavior when loaded
 
 The agent should:

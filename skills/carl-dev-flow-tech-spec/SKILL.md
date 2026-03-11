@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-tech-spec
 description: Run the technical-confirmation stage where the user, Sisyphus, and Hephaestus converge on a final technical spec through draft, feasibility review, and revision.
-version: 1.0.0
+version: 1.1.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -45,7 +45,7 @@ The technical artifact must evolve through:
 - performance and rate-limit assumptions
 - maintenance cost and operator burden
 - interfaces between modules or services
-- explicit tradeoffs and rejected alternatives
+- explicit tradeoffs and rejected alternatives documented as ADR
 
 ## Output contract
 
@@ -56,6 +56,7 @@ Always state:
 - what risks remain
 - what changed from draft to revised
 - what blocks promotion to final
+- rejected alternatives as ADR files when architectural decisions are involved
 
 ## Promotion rule
 
@@ -63,8 +64,24 @@ Do not call the spec final until:
 
 - implementation path is concrete enough to split into tasks
 - operational and failure behavior is defined
-- major alternatives have been considered or rejected
+- major alternatives have been considered, rejected, and recorded as ADRs with status `accepted`
 - the user accepts the tradeoffs
+
+
+## Artifact location
+
+Store technical spec artifacts in `.carl/tech-spec/`:
+
+- `.carl/tech-spec/draft.md`
+- `.carl/tech-spec/revised.md`
+- `.carl/tech-spec/final.md`
+- `.carl/tech-spec/decisions/` — architecture decision records
+
+## ADR guidance
+
+Record major architectural decisions as ADR files in `.carl/tech-spec/decisions/` using the template in `templates/adr-template.md`.
+Each ADR tracks status (`proposed`, `accepted`, `rejected`), the options considered, and the chosen outcome with consequences.
+Do not promote the technical spec to `final` until all referenced ADRs have status `accepted`.
 
 ## Default behavior when loaded
 

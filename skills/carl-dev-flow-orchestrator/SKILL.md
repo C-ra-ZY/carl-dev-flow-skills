@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-orchestrator
 description: Orchestrate the full multi-stage delivery workflow shared by Sisyphus, Hephaestus, and the user, while routing stage-specific work to narrower skills.
-version: 1.0.0
+version: 1.1.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -93,6 +93,30 @@ Do not treat verbal agreement as sufficient. The artifact must be updated.
 - For architecture and implementation design, load `carl-dev-flow-tech-spec`.
 - For active coding coordination, load `carl-dev-flow-implementation`.
 - For review and fix loops, load `carl-dev-flow-review-loop`.
+
+## Artifact location convention
+
+Workflow artifacts are stored in the `.carl/` directory at the project root:
+
+- `.carl/state.md` — workflow state tracker
+- `.carl/requirements/` — requirements stage artifacts
+- `.carl/tech-spec/` — technical-confirmation artifacts, including architecture decision records
+- `.carl/implementation/` — task plans and delegation records
+- `.carl/review/` — review memos per iteration
+
+Each stage skill specifies its own file names within the relevant subdirectory.
+Projects may override the default path by documenting the override in `.carl/state.md`.
+
+## State convention
+
+The workflow tracks its current position in `.carl/state.md` with these fields:
+
+- `stage`: one of `requirements-development`, `technical-confirmation`, `development-execution`, `recursive-improvement`
+- `artifact-status`: `draft`, `revised`, or `final`
+- `last-updated-by`: `Sisyphus`, `Hephaestus`, or `User`
+- `open-blockers`: list of unresolved items, or `none`
+
+The state file is descriptive, not prescriptive. Routing logic stays in `carl-dev-flow-stage-router`.
 
 ## Maintenance rule
 

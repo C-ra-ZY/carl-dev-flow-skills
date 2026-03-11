@@ -4,6 +4,30 @@ All notable changes to the carl-dev-flow-skills family will be documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.1.0] - 2025-03-11
+
+### Added
+
+- Artifact location convention: `.carl/` directory structure prescribed by orchestrator,
+  with per-stage paths in each stage skill (`requirements/`, `tech-spec/`,
+  `implementation/`, `review/`)
+- State tracking convention: lightweight `.carl/state.md` with four fields
+  (stage, artifact-status, last-updated-by, open-blockers)
+- Structured fill-in templates for each stage:
+  - `requirements-draft.md` (requirements skeleton)
+  - `tech-spec-draft.md` (tech spec skeleton)
+  - `adr-template.md` (MADR-derived decision record)
+  - `task-plan.md` (implementation task plan)
+  - `review-memo.md` (review memo skeleton)
+- ADR guidance section in tech-spec skill with MADR-derived compact format
+- Pre-edit checklist in implementation skill (verify requirements and tech spec
+  are finalized before code changes)
+- EARS format guidance in requirements skill (optional ubiquitous/event-driven/
+  state-driven/unwanted-behavior syntax patterns)
+- Drift checker now validates template file existence (5 templates across 4 skills)
+- Drift checker now enforces new required wording for v1.1.0 additions
+
+
 ## [1.0.0] - 2025-01-01
 
 ### Added

@@ -9,7 +9,7 @@ from typing import NoReturn
 
 ROOT = Path(__file__).resolve().parents[2]
 
-SKILL_VERSION = "1.0.0"
+SKILL_VERSION = "1.1.0"
 
 EXPECTED = {
     "carl-dev-flow-orchestrator": {
@@ -18,6 +18,9 @@ EXPECTED = {
             "let the user make the final decision",
             "keep this skill short and structural",
             "keep detailed stage procedures only in subskills",
+            "Artifact location convention",
+            "State convention",
+            ".carl/",
         ],
         "forbidden": [
             "requirements draft",
@@ -37,6 +40,9 @@ EXPECTED = {
             "This skill is the authoritative source for the detailed procedure of the `requirements-development` stage",
             "stateful interaction behavior when conversations, edits, or branching flows exist",
             "side effects, suppression rules, or failure semantics when external actions or notifications exist",
+            "Artifact location",
+            ".carl/requirements/",
+            "Requirements format guidance",
         ],
         "forbidden": [
             "thread and edit behavior if messaging is involved",
@@ -47,6 +53,10 @@ EXPECTED = {
         "required": [
             f"version: {SKILL_VERSION}",
             "This skill is the authoritative source for the detailed procedure of the `technical-confirmation` stage",
+            "Artifact location",
+            ".carl/tech-spec/",
+            "ADR guidance",
+            "rejected alternatives documented as ADR",
         ],
         "forbidden": [],
     },
@@ -55,6 +65,9 @@ EXPECTED = {
             f"version: {SKILL_VERSION}",
             "This skill is the authoritative source for the detailed procedure of the `development-execution` stage",
             "`Hephaestus` reviews integrated changes in parallel",
+            "Artifact location",
+            ".carl/implementation/",
+            "Pre-edit checklist",
         ],
         "forbidden": [],
     },
@@ -64,6 +77,8 @@ EXPECTED = {
             "This skill is the authoritative source for the detailed procedure of the `recursive-improvement` stage",
             "code-review-expert",
             "requesting-code-review",
+            "Artifact location",
+            ".carl/review/",
         ],
         "forbidden": [],
     },
@@ -120,15 +135,37 @@ def check_file(skill_name: str, config: dict[str, list[str]]) -> str:
     return version
 
 
+EXPECTED_TEMPLATES: dict[str, list[str]] = {
+    "carl-dev-flow-requirements": ["requirements-draft.md"],
+    "carl-dev-flow-tech-spec": ["tech-spec-draft.md", "adr-template.md"],
+    "carl-dev-flow-implementation": ["task-plan.md"],
+    "carl-dev-flow-review-loop": ["review-memo.md"],
+}
+
+
+def check_templates() -> None:
+    """Verify that expected template files exist in each skill's templates/ directory."""
+    for skill_name, templates in EXPECTED_TEMPLATES.items():
+        template_dir = ROOT / skill_name / "templates"
+        for template in templates:
+            path = template_dir / template
+            if not path.exists():
+                fail(f"missing expected template: {path}")
+
+
 def main() -> int:
     versions = set()
     for skill_name, config in EXPECTED.items():
         versions.add(check_file(skill_name, config))
 
     ensure_version_consistency(versions)
-    print("Workflow skill family check passed: 6 files verified, required wording present, forbidden wording absent, versions consistent.")
+    check_templates()
+    print(
+        f"Workflow skill family check passed: {len(EXPECTED)} files verified, "
+        f"{sum(len(t) for t in EXPECTED_TEMPLATES.values())} templates validated, "
+        f"required wording present, forbidden wording absent, versions consistent."
+    )
     return 0
-
 
 if __name__ == "__main__":
     sys.exit(main())

@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-implementation
 description: Run the development-execution stage where Sisyphus decomposes implementation into fine-grained tasks, delegates coding work, and integrates results against the agreed requirements and technical spec.
-version: 1.0.0
+version: 1.1.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -62,6 +62,21 @@ Do not declare this stage complete until:
 - the code matches the agreed documents closely enough for review
 - verification has been run for the changed scope
 - the result is ready to enter `recursive-improvement`
+
+
+## Artifact location
+
+Store implementation artifacts in `.carl/implementation/`:
+
+- `.carl/implementation/task-plan.md` — task breakdown and delegation records
+
+## Pre-edit checklist
+
+Before any source code edit, verify:
+
+- requirements document exists and is `final` or user-approved
+- technical spec exists and is `final` or user-approved
+- if neither exists, the user has explicitly chosen a shortcut and this is recorded in `.carl/state.md`
 
 ## Default behavior when loaded
 
