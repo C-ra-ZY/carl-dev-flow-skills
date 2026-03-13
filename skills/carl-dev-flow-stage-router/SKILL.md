@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-stage-router
 description: Quickly identify the current stage of the Sisyphus and Hephaestus collaboration workflow and drive the next artifact or decision.
-version: 1.1.0
+version: 1.2.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -41,6 +41,7 @@ Map the current work into exactly one primary stage:
 If no workflow artifacts exist yet, default to `requirements-development`.
 If the user already has a stable requirements final and technical spec final, default to `development-execution`.
 If the user is discussing review findings, fixes, or delivery quality, default to `recursive-improvement`.
+If the user is reporting a bug, regression, or unexpected behavior, load `carl-dev-flow-bugfix` for severity grading and fix-path selection.
 
 ## Required output pattern
 
@@ -59,6 +60,7 @@ When this skill is loaded, produce a short workflow handoff block with:
 - For active coding coordination, use `carl-dev-flow-implementation`.
 - For repeated review and fix cycles, use `carl-dev-flow-review-loop`.
 - For the complete end-to-end process, use `carl-dev-flow-orchestrator`.
+- For bug-fix workflows (bugs, regressions, unexpected behavior), use `carl-dev-flow-bugfix`.
 
 ## Guardrails
 

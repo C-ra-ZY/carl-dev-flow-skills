@@ -13,10 +13,11 @@ The skill family breaks software delivery into four explicit stages, each with i
 | Development Execution | `carl-dev-flow-implementation` | tasks → integrated code |
 | Recursive Improvement | `carl-dev-flow-review-loop` | review memo → fixes → re-review |
 
-Two additional skills provide coordination:
+Three additional skills provide coordination:
 
 - **`carl-dev-flow-orchestrator`** — master lifecycle contract, role boundaries, transition rules
 - **`carl-dev-flow-stage-router`** — fast stage detection and routing entry point
+- **`carl-dev-flow-bugfix`** — bug-fix severity grading, fix-path routing, and minimal-change principles
 
 ## Quick start
 
@@ -70,6 +71,9 @@ skills/
     SKILL.md
     templates/minimal-zh.md
     templates/review-memo.md
+  carl-dev-flow-bugfix/              # Bug-fix workflow orchestration
+    SKILL.md
+    templates/minimal-zh.md
 ```
 
 ## Verification
@@ -83,7 +87,7 @@ python3 skills/carl-dev-flow-orchestrator/scripts/check-workflow-skills.py
 Expected output:
 
 ```
-Workflow skill family check passed: 6 files verified, 8 templates validated,
+Workflow skill family check passed: 7 files verified, 9 templates validated,
 required wording present, forbidden wording absent, versions consistent.
 ```
 

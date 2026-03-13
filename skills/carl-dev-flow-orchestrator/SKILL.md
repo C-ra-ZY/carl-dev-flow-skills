@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-orchestrator
 description: Orchestrate the full multi-stage delivery workflow shared by Sisyphus, Hephaestus, and the user, while routing stage-specific work to narrower skills.
-version: 1.1.0
+version: 1.2.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -43,6 +43,7 @@ Use these skills as the authoritative source for each scope:
 - `carl-dev-flow-tech-spec`: authoritative details for technical-confirmation
 - `carl-dev-flow-implementation`: authoritative details for development-execution
 - `carl-dev-flow-review-loop`: authoritative details for recursive-improvement
+- `carl-dev-flow-bugfix`: bug-fix workflow orchestration, severity grading, and fix-path routing
 
 If a rule is stage-specific, update the relevant subskill first.
 If a rule changes the lifecycle, role contract, or promotion logic across the whole workflow family, update this skill.
@@ -93,6 +94,7 @@ Do not treat verbal agreement as sufficient. The artifact must be updated.
 - For architecture and implementation design, load `carl-dev-flow-tech-spec`.
 - For active coding coordination, load `carl-dev-flow-implementation`.
 - For review and fix loops, load `carl-dev-flow-review-loop`.
+- For bug-fix workflows, load `carl-dev-flow-bugfix`.
 
 ## Artifact location convention
 
@@ -103,6 +105,7 @@ Workflow artifacts are stored in the `.carl/` directory at the project root:
 - `.carl/tech-spec/` — technical-confirmation artifacts, including architecture decision records
 - `.carl/implementation/` — task plans and delegation records
 - `.carl/review/` — review memos per iteration
+- `.carl/bugfix/` — bug-fix triage and path selection records
 
 Each stage skill specifies its own file names within the relevant subdirectory.
 Projects may override the default path by documenting the override in `.carl/state.md`.

@@ -4,6 +4,22 @@ All notable changes to the carl-dev-flow-skills family will be documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.2.0] - 2025-03-13
+
+### Added
+
+- New `carl-dev-flow-bugfix` skill: severity grading (lightweight vs complex),
+  fix-path routing, minimal-change principles, and regression-first exit criteria
+- Bug-fix adaptation sections in three stage skills:
+  - `carl-dev-flow-tech-spec` — root cause analysis, blast radius assessment
+  - `carl-dev-flow-implementation` — minimal fix principle, regression baseline
+  - `carl-dev-flow-review-loop` — regression verification primary, fix effectiveness
+- Orchestrator updated with bugfix ownership model, routing rules, and artifact
+  location convention (`.carl/bugfix/`)
+- Stage router updated with bug-fix detection in stage classifier
+- Drift checker updated for 7-skill family validation (9 templates)
+
+
 ## [1.1.0] - 2025-03-11
 
 ### Added

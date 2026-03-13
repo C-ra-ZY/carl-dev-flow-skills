@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-review-loop
 description: Run repeated code review, discussion, repair, and re-review cycles until Sisyphus, Hephaestus, and the user agree the code is ready for delivery.
-version: 1.1.0
+version: 1.2.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -64,6 +64,15 @@ Do not stop the loop until:
 Store review artifacts in `.carl/review/`:
 
 - `.carl/review/memo-NNN.md` — numbered review memos per iteration
+
+
+## Bug-fix adaptation
+
+When this stage is entered as part of a bug-fix workflow (routed from `carl-dev-flow-bugfix`):
+
+- **Regression verification is the primary review objective.** Confirm that the regression baseline recorded before the fix still holds after the fix.
+- Review findings must distinguish between: fix effectiveness (does it resolve the reported bug?), regression status (did the fix break anything else?), and blast radius accuracy (were the affected components correctly identified?).
+- If the fix introduces new regressions, escalate immediately rather than continuing the normal review loop.
 
 ## Default behavior when loaded
 

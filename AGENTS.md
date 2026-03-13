@@ -46,6 +46,9 @@ carl-dev-flow-skills/
       SKILL.md
       templates/minimal-zh.md
       templates/review-memo.md           # Fill-in skeleton for review memo
+    carl-dev-flow-bugfix/              # Bug-fix workflow orchestration
+      SKILL.md
+      templates/minimal-zh.md
 ```
 
 ## Build / Lint / Test Commands
@@ -58,9 +61,9 @@ python3 skills/carl-dev-flow-orchestrator/scripts/check-workflow-skills.py
 ```
 
 The checker validates:
-- All six skill directories exist with a `SKILL.md`
+- All seven skill directories exist with a `SKILL.md`
 - Each `SKILL.md` has required YAML frontmatter keys and required values
-- Versions are consistent across the family (currently `1.1.0`)
+- Versions are consistent across the family (currently `1.2.0`)
 - Required wording is present in each skill
 - Forbidden wording is absent
 - Expected Chinese invocation templates and stage skeleton templates exist
@@ -91,7 +94,7 @@ Every skill file uses this structure:
 ---
 name: carl-dev-flow-{slug}
 description: One-line description of the skill.
-version: 1.1.0
+version: 1.2.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -116,15 +119,15 @@ metadata:
 |-----------------|----------|--------------------------------------------------------|
 | `name`          | Yes      | Must match directory name exactly                      |
 | `description`   | Yes      | Single line, no period at end                          |
-| `version`       | Yes      | Must match across all six skills                       |
+| `version`       | Yes      | Must match across all seven skills                     |
 | `compatibility` | Yes      | Always `opencode`                                      |
 | `license`       | Yes      | `CC-BY-4.0`                                            |
 | `metadata`      | Yes      | Must include `audience` and `domain`                   |
 
 ### Version Consistency
 
-All six SKILL.md files must declare the same `version`. The drift checker enforces
-this. When bumping the version, update all six files in a single change.
+All seven SKILL.md files must declare the same `version`. The drift checker enforces
+this. When bumping the version, update all seven files in a single change.
 
 ## Content Conventions
 
@@ -196,7 +199,7 @@ The single Python file follows these conventions:
 
 - **Duplicating stage detail in orchestrator**: Violates ownership model; update
   the stage subskill instead.
-- **Version mismatch**: Editing one SKILL.md version without updating all six
+- **Version mismatch**: Editing one SKILL.md version without updating all seven
   will fail the drift checker.
 - **Adding forbidden wording**: The checker blocks specific phrases in certain
   skills (e.g., "requirements draft" in orchestrator). Check `EXPECTED` dict in

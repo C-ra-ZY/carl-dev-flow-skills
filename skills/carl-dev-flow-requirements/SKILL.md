@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-requirements
 description: Run the requirements-development stage where the user, Sisyphus, and Hephaestus converge on a final requirements document through draft, review, and revision.
-version: 1.1.0
+version: 1.2.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:

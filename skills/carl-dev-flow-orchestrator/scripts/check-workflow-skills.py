@@ -9,7 +9,7 @@ from typing import NoReturn
 
 ROOT = Path(__file__).resolve().parents[2]
 
-SKILL_VERSION = "1.1.0"
+SKILL_VERSION = "1.2.0"
 
 EXPECTED = {
     "carl-dev-flow-orchestrator": {
@@ -57,6 +57,7 @@ EXPECTED = {
             ".carl/tech-spec/",
             "ADR guidance",
             "rejected alternatives documented as ADR",
+            "Bug-fix adaptation",
         ],
         "forbidden": [],
     },
@@ -68,6 +69,7 @@ EXPECTED = {
             "Artifact location",
             ".carl/implementation/",
             "Pre-edit checklist",
+            "Bug-fix adaptation",
         ],
         "forbidden": [],
     },
@@ -79,6 +81,17 @@ EXPECTED = {
             "requesting-code-review",
             "Artifact location",
             ".carl/review/",
+            "Bug-fix adaptation",
+        ],
+        "forbidden": [],
+    },
+    "carl-dev-flow-bugfix": {
+        "required": [
+            f"version: {SKILL_VERSION}",
+            "Bug severity grading",
+            "Bug-fix principles",
+            "Artifact location",
+            ".carl/bugfix/",
         ],
         "forbidden": [],
     },
@@ -170,6 +183,7 @@ EXPECTED_TEMPLATES: dict[str, list[str]] = {
     "carl-dev-flow-tech-spec": ["tech-spec-draft.md", "adr-template.md"],
     "carl-dev-flow-implementation": ["task-plan.md"],
     "carl-dev-flow-review-loop": ["review-memo.md"],
+    "carl-dev-flow-bugfix": ["minimal-zh.md"],
 }
 
 

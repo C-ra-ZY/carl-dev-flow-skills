@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-implementation
 description: Run the development-execution stage where Sisyphus decomposes implementation into fine-grained tasks, delegates coding work, and integrates results against the agreed requirements and technical spec.
-version: 1.1.0
+version: 1.2.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -79,6 +79,16 @@ Before any source code edit, verify:
 - requirements document exists and is `final` or user-approved
 - technical spec exists and is `final` or user-approved
 - if neither exists, the user has explicitly chosen a shortcut and this is recorded in `.carl/state.md`
+
+
+## Bug-fix adaptation
+
+When this stage is entered as part of a bug-fix workflow (routed from `carl-dev-flow-bugfix`):
+
+- Apply the **minimal fix principle**: change only what is necessary to resolve the defect. Do not refactor, improve, or extend nearby code.
+- Before applying the fix, establish a **regression baseline**: record which tests pass, which behaviors are correct, and what observable state exists before the change.
+- Task-splitting favors isolation: separate the fix itself from any necessary test additions.
+- Exit criteria add: regression baseline recorded, fix scope matches root cause analysis, no unrelated changes included.
 
 ## Default behavior when loaded
 
