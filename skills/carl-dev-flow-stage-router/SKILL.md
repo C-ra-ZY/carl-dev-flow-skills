@@ -22,7 +22,7 @@ This skill is for moments when the user says things like:
 - "which stage are we in"
 - "drive the next step"
 
-## What this skill does
+## Default behavior when loaded
 
 1. Identify the current stage.
 2. Name the expected artifact for that stage.

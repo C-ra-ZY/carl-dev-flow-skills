@@ -62,6 +62,8 @@ Do not declare this stage complete until:
 - the code matches the agreed documents closely enough for review
 - verification has been run for the changed scope
 - the result is ready to enter `recursive-improvement`
+- if a sub-agent task fails while others succeed, integrate the successful parts, record the failure explicitly in the task plan, and re-delegate the failed task before declaring integration complete
+- do not silently drop failed task results or retry without documenting what went wrong
 
 
 ## Artifact location
