@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-bugfix
 description: Coordinate bug-fix workflows by grading severity, selecting the appropriate fix path, and routing to existing stage skills with bug-fix context
-version: 1.2.0
+version: 1.3.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:

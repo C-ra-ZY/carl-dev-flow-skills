@@ -50,6 +50,7 @@ jobs:
               "adr-template.md",
               "task-plan.md",
               "review-memo.md",
+              "slices.md",
           }
 
           def fail(message: str) -> None:

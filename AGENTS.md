@@ -42,6 +42,7 @@ carl-dev-flow-skills/
       SKILL.md
       templates/minimal-zh.md
       templates/task-plan.md             # Fill-in skeleton for task plan
+      templates/slices.md               # Fill-in skeleton for delivery slices
     carl-dev-flow-review-loop/           # Recursive-improvement stage procedure
       SKILL.md
       templates/minimal-zh.md
@@ -63,7 +64,7 @@ python3 skills/carl-dev-flow-orchestrator/scripts/check-workflow-skills.py
 The checker validates:
 - All seven skill directories exist with a `SKILL.md`
 - Each `SKILL.md` has required YAML frontmatter keys and required values
-- Versions are consistent across the family (currently `1.2.0`)
+- Versions are consistent across the family (currently `1.3.0`)
 - Required wording is present in each skill
 - Forbidden wording is absent
 - Expected Chinese invocation templates and stage skeleton templates exist
@@ -94,7 +95,7 @@ Every skill file uses this structure:
 ---
 name: carl-dev-flow-{slug}
 description: One-line description of the skill.
-version: 1.2.0
+version: 1.3.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -161,7 +162,8 @@ this. When bumping the version, update all seven files in a single change.
 - Template filenames: `minimal-zh.md` (minimal Chinese prompt) or
   `zh_CN_INVOCATION.md` (Chinese invocation examples)
 - Structured templates (fill-in skeletons): `requirements-draft.md`,
-  `tech-spec-draft.md`, `adr-template.md`, `task-plan.md`, `review-memo.md`
+  `tech-spec-draft.md`, `adr-template.md`, `task-plan.md`, `slices.md`,
+  `review-memo.md`
 - Templates are short (target <= 30 lines)
 
 ## Python Script Style (check-workflow-skills.py)

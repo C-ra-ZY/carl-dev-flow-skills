@@ -4,6 +4,31 @@ All notable changes to the carl-dev-flow-skills family will be documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.3.0] - 2025-03-18
+
+### Added
+
+- Pre-draft interrogation procedure in `carl-dev-flow-requirements`: structured
+  question categories (user-answerable, codebase-answerable, deferred),
+  convergence rule, and shortcut mechanism for experienced users
+- Execution modes in `carl-dev-flow-implementation`: `tdd-first`,
+  `characterization-first`, and `direct` modes with TDD loop procedure and
+  anti-patterns
+- Slice decomposition in `carl-dev-flow-implementation`: vertical slice
+  breakdown with behavior, dependency, and verification attributes
+- New `slices.md` template for delivery slice breakdowns
+
+### Changed
+
+- Requirements draft template enriched with problem statement, success signals,
+  constraints/assumptions/resolved decisions sections (consolidated to stay
+  within 30-line template limit)
+- Task plan template updated with execution mode, slice-ref, first behavior to
+  prove, test boundary, and refactor follow-up fields
+- Chinese templates updated for requirements and implementation skills
+- Drift checker updated with new required wording and template validation
+- CI template size check updated to include `slices.md`
+
 ## [1.2.0] - 2025-03-13
 
 ### Added

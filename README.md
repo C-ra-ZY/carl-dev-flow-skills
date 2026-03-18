@@ -10,7 +10,7 @@ The skill family breaks software delivery into four explicit stages, each with i
 |---|---|---|
 | Requirements Development | `carl-dev-flow-requirements` | draft → revised → final |
 | Technical Confirmation | `carl-dev-flow-tech-spec` | draft → revised → final |
-| Development Execution | `carl-dev-flow-implementation` | tasks → integrated code |
+| Development Execution | `carl-dev-flow-implementation` | slices → tasks → integrated code |
 | Recursive Improvement | `carl-dev-flow-review-loop` | review memo → fixes → re-review |
 
 Three additional skills provide coordination:
@@ -67,6 +67,7 @@ skills/
     SKILL.md
     templates/minimal-zh.md
     templates/task-plan.md
+    templates/slices.md
   carl-dev-flow-review-loop/        # Recursive-improvement procedure
     SKILL.md
     templates/minimal-zh.md
@@ -87,7 +88,7 @@ python3 skills/carl-dev-flow-orchestrator/scripts/check-workflow-skills.py
 Expected output:
 
 ```
-Workflow skill family check passed: 7 files verified, 9 templates validated,
+Workflow skill family check passed: 7 files verified, 10 templates validated,
 required wording present, forbidden wording absent, versions consistent.
 ```
 

@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-requirements
 description: Run the requirements-development stage where the user, Sisyphus, and Hephaestus converge on a final requirements document through draft, review, and revision.
-version: 1.2.0
+version: 1.3.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -86,6 +86,39 @@ For testable requirements, consider EARS (Easy Approach to Requirements Syntax):
 Each EARS requirement maps directly to one acceptance criterion.
 This format is recommended but not mandatory.
 
+## Pre-draft interrogation
+
+Before writing any requirements draft, run a structured interrogation to surface unknowns.
+
+### Question categories
+
+Separate questions into three pools:
+
+- **user-answerable**: questions only the user can answer (intent, priority, constraints)
+- **codebase-answerable**: questions the agent can resolve by reading the repository (existing APIs, conventions, data models)
+- **deferred**: questions that can be safely postponed without blocking the draft
+
+### Interrogation procedure
+
+1. Read the user's initial description and the relevant codebase context.
+2. Generate a branching set of clarifying questions, organized by category.
+3. Resolve codebase-answerable questions by reading the repository. Present findings to the user for confirmation.
+4. Ask user-answerable questions. Ask the most impactful questions first.
+5. After each answer, evaluate whether new branches of inquiry have opened.
+6. Continue until no high-impact unknown remains, or until the user signals readiness to proceed.
+
+### Convergence rule
+
+Do not begin writing the requirements draft until:
+
+- all user-answerable questions with draft-blocking impact have been answered
+- codebase-answerable questions have been investigated and findings confirmed
+- remaining unknowns are explicitly moved to the deferred pool
+
+### Shortcut
+
+If the user already has a clear, detailed specification or explicitly asks to skip interrogation, proceed directly to drafting. Record the skip in `.carl/state.md`.
+
 ## Default behavior when loaded
 
 The agent should:
@@ -93,4 +126,5 @@ The agent should:
 1. Identify the current stage from available artifacts and conversation context.
 2. Restate the artifact expected at this stage.
 3. Name who authored the current draft and who is reviewing it.
-4. Drive the next discovery, review, or promotion step forward.
+4. If no draft exists yet, begin the pre-draft interrogation procedure.
+5. Drive the next discovery, review, or promotion step forward.

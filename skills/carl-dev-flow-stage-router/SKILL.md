@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-stage-router
 description: Quickly identify the current stage of the Sisyphus and Hephaestus collaboration workflow and drive the next artifact or decision.
-version: 1.2.0
+version: 1.3.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:

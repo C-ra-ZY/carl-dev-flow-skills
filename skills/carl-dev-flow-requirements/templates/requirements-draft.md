@@ -3,10 +3,11 @@
 - author:
 - date:
 - status: draft
+- problem: (What problem this solves and why it matters now.)
 
-## Scope
+## Scope and non-goals
 
-(What this feature or system does and does not cover.)
+(What this covers and what is explicitly out of scope.)
 
 ## Actors
 
@@ -14,17 +15,16 @@
 
 ## Requirements
 
-(List each requirement. Consider using EARS syntax for testable requirements.)
-1. ...
+(Use EARS syntax where possible. Each maps to an acceptance condition.)
 
-## Acceptance conditions
+## Success signals and acceptance conditions
 
-(How to verify each requirement is met.)
+(Observable indicators. How to verify each requirement is met.)
 
-## Non-goals
+## Constraints, assumptions, and resolved decisions
 
-(What is explicitly out of scope.)
+(Key decisions from interrogation. Constraints and assumptions.)
 
 ## Open questions
 
-(Unresolved items for review.)
+(Residual unknowns after interrogation.)

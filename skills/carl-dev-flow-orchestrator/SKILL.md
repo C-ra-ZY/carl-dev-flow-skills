@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-orchestrator
 description: Orchestrate the full multi-stage delivery workflow shared by Sisyphus, Hephaestus, and the user, while routing stage-specific work to narrower skills.
-version: 1.2.0
+version: 1.3.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:

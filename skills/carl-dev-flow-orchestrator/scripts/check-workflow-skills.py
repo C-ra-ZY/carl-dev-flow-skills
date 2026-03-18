@@ -9,7 +9,7 @@ from typing import NoReturn
 
 ROOT = Path(__file__).resolve().parents[2]
 
-SKILL_VERSION = "1.2.0"
+SKILL_VERSION = "1.3.0"
 
 EXPECTED = {
     "carl-dev-flow-orchestrator": {
@@ -43,6 +43,8 @@ EXPECTED = {
             "Artifact location",
             ".carl/requirements/",
             "Requirements format guidance",
+            "Pre-draft interrogation",
+            "Convergence rule",
         ],
         "forbidden": [
             "thread and edit behavior if messaging is involved",
@@ -70,6 +72,9 @@ EXPECTED = {
             ".carl/implementation/",
             "Pre-edit checklist",
             "Bug-fix adaptation",
+            "Execution modes",
+            "Slice decomposition",
+            "slices.md",
         ],
         "forbidden": [],
     },
@@ -181,7 +186,7 @@ EXPECTED_TEMPLATES: dict[str, list[str]] = {
     "carl-dev-flow-stage-router": ["minimal-zh.md", "zh_CN_INVOCATION.md"],
     "carl-dev-flow-requirements": ["requirements-draft.md"],
     "carl-dev-flow-tech-spec": ["tech-spec-draft.md", "adr-template.md"],
-    "carl-dev-flow-implementation": ["task-plan.md"],
+    "carl-dev-flow-implementation": ["task-plan.md", "slices.md"],
     "carl-dev-flow-review-loop": ["review-memo.md"],
     "carl-dev-flow-bugfix": ["minimal-zh.md"],
 }

@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-implementation
 description: Run the development-execution stage where Sisyphus decomposes implementation into fine-grained tasks, delegates coding work, and integrates results against the agreed requirements and technical spec.
-version: 1.2.0
+version: 1.3.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -80,6 +80,58 @@ Before any source code edit, verify:
 - technical spec exists and is `final` or user-approved
 - if neither exists, the user has explicitly chosen a shortcut and this is recorded in `.carl/state.md`
 
+
+## Execution modes
+
+Each implementation task must declare one of these execution modes:
+
+- **tdd-first**: write a failing test for the expected behavior, implement until the test passes, then refactor. Use this mode for new behavior or when test boundaries are clear.
+- **characterization-first**: write tests that capture existing behavior before modifying it. Use this mode for brownfield work, regression-prone areas, or when the current behavior is poorly documented.
+- **direct**: implement without writing tests first. Use this mode only when tests are impossible or not meaningful for the change (e.g., configuration changes, pure wiring). Record the reason for choosing direct mode.
+
+### TDD loop
+
+When using `tdd-first` or `characterization-first`:
+
+1. Pick one slice or behavior to prove.
+2. Write a test that fails (red).
+3. Write the minimum code to pass (green).
+4. Refactor only after the test passes.
+5. Move to the next slice or behavior.
+
+### Anti-patterns
+
+- Do not implement an entire horizontal layer before testing any vertical behavior.
+- Do not write tests after all implementation is done and call it TDD.
+- Do not test implementation details (private methods, internal state) when behavior tests are possible.
+
+## Slice decomposition
+
+Break finalized requirements and technical spec into independently deliverable vertical slices.
+
+### Slice definition
+
+Each slice must deliver a user-visible or system-observable behavior. A slice cuts through all necessary layers (UI, logic, data, infrastructure) rather than completing one layer at a time.
+
+### Slice attributes
+
+For each slice, define:
+
+- title
+- behavior delivered (one sentence describing the observable outcome)
+- requirements and spec references
+- dependencies on other slices
+- expected verification approach
+
+Store slice breakdowns in `.carl/implementation/slices.md` using the template in `templates/slices.md`.
+
+### Ordering
+
+Order slices by:
+
+1. dependency (blocked slices come after their blockers)
+2. risk (uncertain or complex slices earlier)
+3. value (high-value behaviors earlier when dependencies allow)
 
 ## Bug-fix adaptation
 
