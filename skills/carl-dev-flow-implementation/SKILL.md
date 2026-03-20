@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-implementation
 description: Run the development-execution stage where Sisyphus decomposes implementation into fine-grained tasks, delegates coding work, and integrates results against the agreed requirements and technical spec.
-version: 1.3.0
+version: 1.4.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -12,7 +12,6 @@ metadata:
 ## Purpose
 
 Use this skill after requirements and technical direction are aligned and the work is ready to move into coding execution.
-
 This skill is the authoritative source for the detailed procedure of the `development-execution` stage inside the Sisyphus and Hephaestus workflow family.
 
 For the shortest Chinese invocation form, see `templates/minimal-zh.md`.
@@ -21,19 +20,18 @@ For the shortest Chinese invocation form, see `templates/minimal-zh.md`.
 
 `Sisyphus` is the master agent for this stage.
 
-Sub-agents do the focused implementation work.
+Sub-agents do focused implementation work.
 `Hephaestus` reviews integrated changes in parallel, challenges drift from the agreed documents, and helps prepare the codebase for the next review stage.
+That review stays with `Hephaestus`; specialists may advise on narrow questions, but they do not replace the review.
 This skill is about turning agreed documents into well-scoped execution units and keeping the resulting code integrated and reviewable.
 
 ## Workflow
 
-1. Confirm that requirements final and technical spec final exist, or that the user explicitly chose to proceed with an accepted shortcut.
-2. Break the implementation into fine-grained tasks using feature span, module boundaries, coupling, and verification needs.
-3. Order tasks by dependency and execution risk.
-4. Delegate concrete coding tasks to sub-agents with clear scope and acceptance criteria.
-5. Integrate the resulting changes into a coherent working state.
-6. Verify the integrated result against requirements and technical spec.
-7. Prepare the codebase for recursive improvement rather than treating first-pass implementation as done.
+1. Confirm that requirements final and technical spec final exist, or that the user explicitly chose an accepted shortcut.
+2. Break the implementation into fine-grained tasks and order them by dependency and risk.
+3. Delegate concrete coding tasks to sub-agents with clear scope and acceptance criteria.
+4. Integrate the resulting changes into a coherent working state.
+5. Verify the integrated result against requirements and technical spec, then prepare for `recursive-improvement`.
 
 ## Task-splitting rules
 
@@ -54,6 +52,8 @@ Every delegated implementation task should state:
 - required verification
 - forbidden shortcuts
 
+Delegation here applies to implementation tasks only. Final review judgment and acceptance stay with `Hephaestus` and the user-facing workflow owners.
+
 ## Exit criteria
 
 Do not declare this stage complete until:
@@ -68,9 +68,7 @@ Do not declare this stage complete until:
 
 ## Artifact location
 
-Store implementation artifacts in `.carl/implementation/`:
-
-- `.carl/implementation/task-plan.md` — task breakdown and delegation records
+Store implementation artifacts under `.carl/implementation/`, including `task-plan.md` and `slices.md`.
 
 ## Pre-edit checklist
 
@@ -111,7 +109,8 @@ Break finalized requirements and technical spec into independently deliverable v
 
 ### Slice definition
 
-Each slice must deliver a user-visible or system-observable behavior. A slice cuts through all necessary layers (UI, logic, data, infrastructure) rather than completing one layer at a time.
+Each slice must deliver a user-visible or system-observable behavior.
+A slice cuts through the necessary layers (UI, logic, data, infrastructure) rather than completing one layer at a time.
 
 ### Slice attributes
 
@@ -139,12 +138,10 @@ When this stage is entered as part of a bug-fix workflow (routed from `carl-dev-
 
 - Apply the **minimal fix principle**: change only what is necessary to resolve the defect. Do not refactor, improve, or extend nearby code.
 - Before applying the fix, establish a **regression baseline**: record which tests pass, which behaviors are correct, and what observable state exists before the change.
-- Task-splitting favors isolation: separate the fix itself from any necessary test additions.
-- Exit criteria add: regression baseline recorded, fix scope matches root cause analysis, no unrelated changes included.
+- Task-splitting favors isolation: separate the fix itself from necessary test additions.
+- Exit criteria add: regression baseline recorded, fix scope matches root cause analysis, and no unrelated changes are included.
 
 ## Default behavior when loaded
-
-The agent should:
 
 1. Confirm that requirements final and technical spec final exist or that an accepted shortcut is in effect.
 2. Assess current implementation progress against the task breakdown.

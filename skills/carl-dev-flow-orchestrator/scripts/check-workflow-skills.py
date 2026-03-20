@@ -9,7 +9,7 @@ from typing import NoReturn
 
 ROOT = Path(__file__).resolve().parents[2]
 
-SKILL_VERSION = "1.3.0"
+SKILL_VERSION = "1.4.0"
 
 EXPECTED = {
     "carl-dev-flow-orchestrator": {
@@ -21,6 +21,7 @@ EXPECTED = {
             "Artifact location convention",
             "State convention",
             ".carl/",
+            "review conclusions stay with `Hephaestus`",
         ],
         "forbidden": [
             "requirements draft",
@@ -38,6 +39,7 @@ EXPECTED = {
         "required": [
             f"version: {SKILL_VERSION}",
             "This skill is the authoritative source for the detailed procedure of the `requirements-development` stage",
+            "The reviewer of record is `Hephaestus`",
             "stateful interaction behavior when conversations, edits, or branching flows exist",
             "side effects, suppression rules, or failure semantics when external actions or notifications exist",
             "Artifact location",
@@ -55,6 +57,7 @@ EXPECTED = {
         "required": [
             f"version: {SKILL_VERSION}",
             "This skill is the authoritative source for the detailed procedure of the `technical-confirmation` stage",
+            "The reviewer of record is `Hephaestus`",
             "Artifact location",
             ".carl/tech-spec/",
             "ADR guidance",
@@ -87,6 +90,8 @@ EXPECTED = {
             "Artifact location",
             ".carl/review/",
             "Bug-fix adaptation",
+            "after `Hephaestus` has written the findings",
+            "Do not delegate the review itself to `Oracle` or any other agent",
         ],
         "forbidden": [],
     },

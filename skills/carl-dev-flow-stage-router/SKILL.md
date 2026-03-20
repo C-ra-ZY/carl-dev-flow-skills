@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-stage-router
 description: Quickly identify the current stage of the Sisyphus and Hephaestus collaboration workflow and drive the next artifact or decision.
-version: 1.3.0
+version: 1.4.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -12,15 +12,9 @@ metadata:
 ## Purpose
 
 Use this skill as the fast entry point into the broader Sisyphus and Hephaestus workflow.
+Use it for "start the workflow", "continue from here", or "which stage are we in" moments.
 
 For Chinese invocation examples, see `templates/zh_CN_INVOCATION.md` and `templates/minimal-zh.md`.
-
-This skill is for moments when the user says things like:
-
-- "let's start the workflow"
-- "continue from here"
-- "which stage are we in"
-- "drive the next step"
 
 ## Default behavior when loaded
 
@@ -67,3 +61,4 @@ When this skill is loaded, produce a short workflow handoff block with:
 - Do not leave the user with only a stage label; move the workflow forward.
 - Do not skip artifact naming.
 - Do not merge requirement questions into implementation planning unless the user explicitly chooses a shortcut.
+- When routing into `recursive-improvement`, keep `Hephaestus` as the reviewer of record.

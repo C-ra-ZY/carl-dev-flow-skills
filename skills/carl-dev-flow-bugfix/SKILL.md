@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-bugfix
 description: Coordinate bug-fix workflows by grading severity, selecting the appropriate fix path, and routing to existing stage skills with bug-fix context
-version: 1.3.0
+version: 1.4.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -12,8 +12,7 @@ metadata:
 ## Purpose
 
 Use this skill when the starting point is a defect, regression, or unexpected behavior rather than a new feature request.
-
-This skill owns the bug-fix workflow orchestration: severity grading, path selection, and stage sequencing. It does not replace or reinterpret existing stage skills. Each stage skill contains its own `Bug-fix adaptation` section describing how its procedure adjusts for bug-fix scenarios.
+This skill owns severity grading, path selection, and stage sequencing. It does not replace the stage skills; each one keeps its own `Bug-fix adaptation` section.
 
 For the shortest Chinese invocation form, see `templates/minimal-zh.md`.
 
@@ -40,7 +39,7 @@ When severity is ambiguous, default to complex.
 1. **Bug report** — use `carl-dev-flow-requirements` in bug-fix mode: capture reproduction steps, expected vs actual behavior, and acceptance criteria for the fix.
 2. **Root cause analysis** — use `carl-dev-flow-tech-spec` in bug-fix mode: identify root cause, assess blast radius, and define a minimal fix strategy.
 3. **Fix implementation** — use `carl-dev-flow-implementation` in bug-fix mode: apply the minimal fix, avoid unrelated refactoring, and establish a regression baseline.
-4. **Fix verification** — use `carl-dev-flow-review-loop` in bug-fix mode: verify the fix resolves the reported behavior, confirm no regressions, and check blast radius assumptions.
+4. **Fix verification** — use `carl-dev-flow-review-loop` in bug-fix mode: verify the fix resolves the reported behavior, confirm no regressions, check blast radius assumptions, and keep `Hephaestus` as reviewer of record.
 
 ## Routing rules
 
@@ -58,14 +57,12 @@ Each of these skills has a `Bug-fix adaptation` section that describes how its s
 - Establish a regression baseline before applying the fix.
 - Assess blast radius before committing to a fix strategy.
 - If the fix introduces new risk, escalate severity from lightweight to complex.
+- Review ownership stays with `Hephaestus`; outside advice is supplemental.
 
 ## Artifact location
 
-Store bug-fix orchestration artifacts in `.carl/bugfix/`:
-
-- `.carl/bugfix/triage.md` — severity grading and path selection record
-
-Stage-specific artifacts remain in their standard locations (`.carl/requirements/`, `.carl/tech-spec/`, etc.).
+Store bug-fix orchestration artifacts under `.carl/bugfix/`, including `triage.md`.
+Stage-specific artifacts remain in their standard locations (`.carl/requirements/`, `.carl/tech-spec/`, and so on).
 
 ## Exit criteria
 

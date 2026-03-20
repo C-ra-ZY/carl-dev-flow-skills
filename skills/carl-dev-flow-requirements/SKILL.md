@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-requirements
 description: Run the requirements-development stage where the user, Sisyphus, and Hephaestus converge on a final requirements document through draft, review, and revision.
-version: 1.3.0
+version: 1.4.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -11,8 +11,7 @@ metadata:
 
 ## Purpose
 
-Use this skill when the user is still shaping business intent, behavior boundaries, edge cases, and acceptance expectations.
-
+Use this skill when business intent, behavior boundaries, edge cases, or acceptance expectations are still being shaped.
 This skill is the authoritative source for the detailed procedure of the `requirements-development` stage inside the Sisyphus and Hephaestus workflow family.
 
 For the shortest Chinese invocation form, see `templates/minimal-zh.md`.
@@ -27,14 +26,14 @@ The requirements artifact must evolve through:
 
 ## Workflow
 
-1. One agent leads the Q and A discovery with the user.
-2. The discussion leader writes the initial requirements draft.
-3. The other agent reviews the draft without being the original author.
-4. The reviewer normalizes structure, checks logic flow, and hunts for missing edge cases.
-5. The document becomes a revised draft.
-6. The user, `Sisyphus`, and `Hephaestus` review the revised draft together.
-7. Resolve disagreements in the document.
-8. Produce the final requirements document.
+1. One agent leads discovery with the user and writes the initial draft.
+2. The other core agent reviews the draft without being the original author.
+3. The reviewer normalizes structure, checks logic flow, and hunts for missing edge cases.
+4. Revise the document in writing.
+5. The user, `Sisyphus`, and `Hephaestus` align on the revised draft.
+6. Produce the final requirements document only after open issues are resolved or explicitly deferred.
+
+The reviewer of record is `Hephaestus` (the other core agent), not an outside reviewer.
 
 ## What the reviewer must check
 
@@ -53,7 +52,7 @@ Always state:
 - who authored the current draft
 - who is reviewing it
 - unresolved questions
-- what changed from draft to revised
+- what changed since the last draft
 - what conditions are needed to promote to final
 
 ## Promotion rule
@@ -64,15 +63,12 @@ Do not call the document final until:
 - edge cases are either resolved or explicitly deferred
 - the user confirms the behavior matches intent
 - both `Sisyphus` and `Hephaestus` have had a review opportunity
+- any external advice is treated as advisory only, not as a substitute for `Hephaestus` review
 
 
 ## Artifact location
 
-Store requirements artifacts in `.carl/requirements/`:
-
-- `.carl/requirements/draft.md`
-- `.carl/requirements/revised.md`
-- `.carl/requirements/final.md`
+Store `draft.md`, `revised.md`, and `final.md` under `.carl/requirements/`.
 
 ## Requirements format guidance
 
@@ -101,11 +97,9 @@ Separate questions into three pools:
 ### Interrogation procedure
 
 1. Read the user's initial description and the relevant codebase context.
-2. Generate a branching set of clarifying questions, organized by category.
-3. Resolve codebase-answerable questions by reading the repository. Present findings to the user for confirmation.
-4. Ask user-answerable questions. Ask the most impactful questions first.
-5. After each answer, evaluate whether new branches of inquiry have opened.
-6. Continue until no high-impact unknown remains, or until the user signals readiness to proceed.
+2. Organize unknowns into the three question pools.
+3. Resolve codebase-answerable questions in the repository before asking the user.
+4. Ask the highest-impact user-answerable questions, then repeat until no draft-blocking unknown remains.
 
 ### Convergence rule
 
@@ -121,10 +115,8 @@ If the user already has a clear, detailed specification or explicitly asks to sk
 
 ## Default behavior when loaded
 
-The agent should:
-
-1. Identify the current stage from available artifacts and conversation context.
+1. Identify the current stage from artifacts and conversation context.
 2. Restate the artifact expected at this stage.
 3. Name who authored the current draft and who is reviewing it.
-4. If no draft exists yet, begin the pre-draft interrogation procedure.
+4. If no draft exists yet, begin the Pre-draft interrogation procedure.
 5. Drive the next discovery, review, or promotion step forward.

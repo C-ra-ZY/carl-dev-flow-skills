@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-orchestrator
 description: Orchestrate the full multi-stage delivery workflow shared by Sisyphus, Hephaestus, and the user, while routing stage-specific work to narrower skills.
-version: 1.3.0
+version: 1.4.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -11,16 +11,9 @@ metadata:
 
 ## Purpose
 
-Use this as the top-level workflow contract for the entire collaboration model.
-
-This skill is the canonical source of truth for:
-
-- the overall stage sequence
-- role boundaries
-- document lifecycle rules
-- handoff and promotion rules between stages
-
-This skill is not the canonical place for stage-specific step-by-step detail. That detail belongs in the narrower subskills.
+Use this as the top-level contract for the workflow family.
+It defines stage order, role boundaries, document lifecycle rules, and promotion logic.
+Keep stage-specific procedures in the narrower subskills.
 
 For maintenance helpers and Chinese invocation examples, see the companion resources in this workflow family.
 
@@ -62,6 +55,7 @@ If a rule changes the lifecycle, role contract, or promotion logic across the wh
 - independent reviewer and technical challenger
 - second-pass critic for requirements, specs, and code
 - primary partner in recursive review loops
+- review conclusions stay with `Hephaestus`, even when specialist advice is consulted
 
 ### User
 
@@ -80,6 +74,7 @@ Recursive improvement must follow:
 - `review memo draft -> agreed review memo -> delegated fixes -> re-review`
 
 Do not treat verbal agreement as sufficient. The artifact must be updated.
+`delegated fixes` refers to implementation work, not delegation of review ownership.
 
 ## Transition rules
 
@@ -140,5 +135,5 @@ To minimize drift inside this skill family:
 
 1. Identify the current stage.
 2. Restate the artifact expected at that stage.
-3. Load or follow the correct stage-specific skill when appropriate.
+3. Name the role that should lead next and load the matching subskill when needed.
 4. Drive the workflow forward instead of stopping at description.

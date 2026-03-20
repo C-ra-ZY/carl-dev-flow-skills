@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-review-loop
 description: Run repeated code review, discussion, repair, and re-review cycles until Sisyphus, Hephaestus, and the user agree the code is ready for delivery.
-version: 1.3.0
+version: 1.4.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -11,8 +11,7 @@ metadata:
 
 ## Purpose
 
-Use this skill after implementation exists and the goal is not just to patch code once, but to iterate until delivery quality is accepted.
-
+Use this skill after implementation exists and the goal is to iterate until delivery quality is accepted.
 This skill is the authoritative source for the detailed procedure of the `recursive-improvement` stage inside the Sisyphus and Hephaestus workflow family.
 
 For the shortest Chinese invocation form, see `templates/minimal-zh.md`.
@@ -20,11 +19,11 @@ For the shortest Chinese invocation form, see `templates/minimal-zh.md`.
 ## Core loop
 
 1. `Hephaestus` and the user review the current code.
-2. Produce a review memo draft.
+2. `Hephaestus` produces the review memo draft and owns the first review judgment.
 3. `Sisyphus` reviews that memo independently and states agreement, disagreement, and additions.
-4. The user and `Sisyphus` align on the final review memo.
+4. The user and `Sisyphus` align on the agreed review memo.
 5. `Sisyphus` decomposes approved fixes and delegates them to sub-agents.
-6. Fixes are implemented.
+6. Fixes are implemented and then re-reviewed.
 7. Repeat until all three parties accept the code as deliverable.
 
 ## Review memo structure
@@ -47,7 +46,9 @@ For each finding, record:
 
 ## Useful companion skills
 
-When available, prefer loading `code-review-expert` or `requesting-code-review` to strengthen review quality, reporting clarity, and repair tracking during each review round.
+`code-review-expert` or `requesting-code-review` may help with memo formatting or repair tracking after `Hephaestus` has written the findings.
+They do not replace `Hephaestus` as reviewer of record.
+Do not delegate the review itself to `Oracle` or any other agent; `Hephaestus` must inspect the code, write the findings, and stand behind the memo.
 
 ## Exit criteria
 
@@ -61,9 +62,7 @@ Do not stop the loop until:
 
 ## Artifact location
 
-Store review artifacts in `.carl/review/`:
-
-- `.carl/review/memo-NNN.md` — numbered review memos per iteration
+Store numbered review memos under `.carl/review/`, such as `memo-NNN.md`.
 
 
 ## Bug-fix adaptation
@@ -76,9 +75,7 @@ When this stage is entered as part of a bug-fix workflow (routed from `carl-dev-
 
 ## Default behavior when loaded
 
-The agent should:
-
-1. identify the current fix-review iteration
-2. summarize what changed since the last review
-3. produce or refine the review memo
-4. drive the next repair or re-review step
+1. Identify the current fix-review iteration.
+2. Summarize what changed since the last review.
+3. Produce or refine the review memo.
+4. Drive the next repair or re-review step.

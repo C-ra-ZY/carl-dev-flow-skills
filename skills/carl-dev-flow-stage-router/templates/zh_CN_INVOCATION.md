@@ -50,6 +50,7 @@ requirements final 和 technical spec final 已经就绪。
 请加载 carl-dev-flow-review-loop。
 当前代码已经有实现，请组织 Hephaestus + 用户先产出 review memo draft，
 再由 Sisyphus 做独立复核，形成 agreed review memo，随后拆解修复并进入下一轮复审。
+Hephaestus 是主要审查者；如需额外专家意见，只能作为顾问性输入，不能替代 Hephaestus 自己完成 review。
 ```
 
 ## 7. 明确仲裁规则
