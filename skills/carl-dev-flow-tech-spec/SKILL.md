@@ -67,6 +67,7 @@ Do not call the spec final until:
 - the user accepts the tradeoffs
 - any external advice is treated as advisory only, not as a substitute for `Hephaestus` review
 
+When promoting the artifact (draft to revised, or revised to final), consider using interactive questions to confirm the promotion with the user. This is recommended when the promotion involves significant changes or unresolved discussion points.
 
 ## Artifact location
 
@@ -94,3 +95,4 @@ When this stage is entered as part of a bug-fix workflow (routed from `carl-dev-
 2. Identify whether a draft, revised draft, or final spec exists.
 3. Restate the primary technical decision under review.
 4. Drive the next discussion, review, or promotion step forward.
+5. When the technical spec reaches `final` and the stage is complete, use interactive questions to confirm the transition to `development-execution` with the user in the same response.

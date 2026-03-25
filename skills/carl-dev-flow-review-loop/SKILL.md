@@ -59,6 +59,7 @@ Do not stop the loop until:
 - remaining issues are explicitly deferred and accepted
 - `Sisyphus`, `Hephaestus`, and the user all agree the code is at delivery level
 
+When all exit criteria are met, consider using interactive questions to confirm delivery readiness with the user. This is recommended when deferred issues exist or when the review involved multiple iteration rounds.
 
 ## Artifact location
 
@@ -79,3 +80,4 @@ When this stage is entered as part of a bug-fix workflow (routed from `carl-dev-
 2. Summarize what changed since the last review.
 3. Produce or refine the review memo.
 4. Drive the next repair or re-review step.
+5. When all exit criteria are met and the code is accepted as deliverable, use interactive questions to confirm delivery with the user and summarize the overall workflow outcome in the same response.

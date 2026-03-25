@@ -83,6 +83,12 @@ Do not treat verbal agreement as sufficient. The artifact must be updated.
 - When disagreement appears, write it down as an explicit open issue and resolve it in the artifact.
 - If `Sisyphus` and `Hephaestus` disagree on direction, present the disagreement clearly and let the user make the final decision.
 
+### Session continuity
+
+When a stage completes and the workflow is ready to transition to the next stage, `Sisyphus` must use interactive questions within the same response to confirm the transition with the user. Do not end the response and wait for a new user message to continue. Present the transition as a clear choice — summarize what was accomplished, state the proposed next stage, and ask the user to confirm or adjust before proceeding.
+
+At significant intra-stage checkpoints (for example, promoting an artifact from draft to revised, or from revised to final), `Sisyphus` is encouraged to use interactive questions to confirm the promotion with the user. This is recommended but not mandatory — `Sisyphus` may proceed without confirmation when the promotion conditions are clearly met and the user has already expressed agreement in the conversation.
+
 ## Routing rules
 
 - For early product shaping, load `carl-dev-flow-requirements`.

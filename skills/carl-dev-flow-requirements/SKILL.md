@@ -65,6 +65,7 @@ Do not call the document final until:
 - both `Sisyphus` and `Hephaestus` have had a review opportunity
 - any external advice is treated as advisory only, not as a substitute for `Hephaestus` review
 
+When promoting the artifact (draft to revised, or revised to final), consider using interactive questions to confirm the promotion with the user. This is recommended when the promotion involves significant changes or unresolved discussion points.
 
 ## Artifact location
 
@@ -120,3 +121,4 @@ If the user already has a clear, detailed specification or explicitly asks to sk
 3. Name who authored the current draft and who is reviewing it.
 4. If no draft exists yet, begin the Pre-draft interrogation procedure.
 5. Drive the next discovery, review, or promotion step forward.
+6. When the requirements document reaches `final` and the stage is complete, use interactive questions to confirm the transition to `technical-confirmation` with the user in the same response.

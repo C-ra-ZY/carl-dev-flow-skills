@@ -22,6 +22,7 @@ For Chinese invocation examples, see `templates/zh_CN_INVOCATION.md` and `templa
 2. Name the expected artifact for that stage.
 3. State which role should lead next.
 4. Drive the transition forward instead of stopping at summary.
+5. When routing to a new stage, use interactive questions to confirm the transition with the user in the same response rather than ending the conversation.
 
 ## Stage classifier
 

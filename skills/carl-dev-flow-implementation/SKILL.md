@@ -65,6 +65,7 @@ Do not declare this stage complete until:
 - if a sub-agent task fails while others succeed, integrate the successful parts, record the failure explicitly in the task plan, and re-delegate the failed task before declaring integration complete
 - do not silently drop failed task results or retry without documenting what went wrong
 
+When all exit criteria are met, consider using interactive questions to confirm readiness with the user before transitioning. This is recommended when verification results need user attention or when the implementation deviated from the original plan.
 
 ## Artifact location
 
@@ -147,3 +148,4 @@ When this stage is entered as part of a bug-fix workflow (routed from `carl-dev-
 2. Assess current implementation progress against the task breakdown.
 3. Identify the next task to delegate or integrate.
 4. Drive execution forward rather than stopping at planning.
+5. When all exit criteria are met, use interactive questions to confirm the transition to `recursive-improvement` with the user in the same response.
