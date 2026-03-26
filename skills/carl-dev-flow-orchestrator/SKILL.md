@@ -56,6 +56,7 @@ If a rule changes the lifecycle, role contract, or promotion logic across the wh
 - second-pass critic for requirements, specs, and code
 - primary partner in recursive review loops
 - review conclusions stay with `Hephaestus`, even when specialist advice is consulted
+- `Sisyphus` must never delegate review work to `Oracle` or any other consultation agent; `Oracle` is for architecture and debugging consultation, not for performing reviews on behalf of `Hephaestus`
 
 ### User
 
@@ -75,6 +76,7 @@ Recursive improvement must follow:
 
 Do not treat verbal agreement as sufficient. The artifact must be updated.
 `delegated fixes` refers to implementation work, not delegation of review ownership.
+Review ownership stays with `Hephaestus` throughout recursive improvement; `Sisyphus` must never delegate review work to `Oracle` or other agents as a substitute.
 
 ## Transition rules
 
@@ -85,9 +87,11 @@ Do not treat verbal agreement as sufficient. The artifact must be updated.
 
 ### Session continuity
 
-When a stage completes and the workflow is ready to transition to the next stage, `Sisyphus` must use interactive questions within the same response to confirm the transition with the user. Do not end the response and wait for a new user message to continue. Present the transition as a clear choice — summarize what was accomplished, state the proposed next stage, and ask the user to confirm or adjust before proceeding.
+When a primary workflow stage completes and the workflow is ready to transition to the next stage, `Sisyphus` must use interactive questions within the same response to confirm the transition with the user. Do not end the response and wait for a new user message to continue. Present the transition as a clear choice — summarize what was accomplished, state the proposed next stage, and ask the user to confirm or adjust before proceeding.
 
-At significant intra-stage checkpoints (for example, promoting an artifact from draft to revised, or from revised to final), `Sisyphus` is encouraged to use interactive questions to confirm the promotion with the user. This is recommended but not mandatory — `Sisyphus` may proceed without confirmation when the promotion conditions are clearly met and the user has already expressed agreement in the conversation.
+These session-continuity rules apply to stage transitions and workflow completion only. They do not override intra-stage autonomous progression defined by the narrower stage skills.
+
+At checkpoints that stay within the current stage (for example, promoting an artifact from draft to revised, or from revised to final), `Sisyphus` should proceed automatically when the promotion conditions are clearly met and the user has already expressed agreement. Use interactive questions inside a stage only when unresolved product, scope, or risk decisions still require user input.
 
 ## Routing rules
 

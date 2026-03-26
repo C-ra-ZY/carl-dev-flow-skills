@@ -79,4 +79,4 @@ Do not declare a bug-fix complete until:
 2. Grade the severity as lightweight or complex.
 3. Select the appropriate fix path.
 4. Drive the first step of that path forward.
-5. At each path transition (for example, moving from bug report to root cause analysis, or from fix implementation to fix verification), consider using interactive questions to confirm the next step with the user in the same response. This is recommended when the transition involves a severity change or when the path selection was ambiguous.
+5. At each path transition that changes the primary workflow stage or severity handling path (for example, moving from bug report to root cause analysis, or from fix implementation to fix verification), consider using interactive questions to confirm the next step with the user in the same response. For internal steps that stay within the current stage, continue automatically. This is recommended when the transition involves a severity change or when the path selection was ambiguous.

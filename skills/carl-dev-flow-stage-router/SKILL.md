@@ -22,7 +22,7 @@ For Chinese invocation examples, see `templates/zh_CN_INVOCATION.md` and `templa
 2. Name the expected artifact for that stage.
 3. State which role should lead next.
 4. Drive the transition forward instead of stopping at summary.
-5. When routing to a new stage, use interactive questions to confirm the transition with the user in the same response rather than ending the conversation.
+5. When routing to a new primary stage, use interactive questions to confirm the transition with the user in the same response rather than ending the conversation.
 
 ## Stage classifier
 
@@ -62,4 +62,4 @@ When this skill is loaded, produce a short workflow handoff block with:
 - Do not leave the user with only a stage label; move the workflow forward.
 - Do not skip artifact naming.
 - Do not merge requirement questions into implementation planning unless the user explicitly chooses a shortcut.
-- When routing into `recursive-improvement`, keep `Hephaestus` as the reviewer of record.
+- When routing into `recursive-improvement`, keep `Hephaestus` as the reviewer of record. `Sisyphus` must never delegate review work to `Oracle` or any other agent; `Oracle` is a consultation tool for architecture and debugging, not a review substitute.

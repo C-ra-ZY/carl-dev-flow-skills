@@ -22,6 +22,8 @@ EXPECTED = {
             "State convention",
             ".carl/",
             "review conclusions stay with `Hephaestus`",
+            "must never delegate review work to `Oracle`",
+            "do not override intra-stage autonomous progression",
         ],
         "forbidden": [
             "requirements draft",
@@ -32,6 +34,7 @@ EXPECTED = {
         "required": [
             f"version: {SKILL_VERSION}",
             "If no workflow artifacts exist yet, default to `requirements-development`.",
+            "must never delegate review work to `Oracle`",
         ],
         "forbidden": [],
     },
@@ -78,6 +81,7 @@ EXPECTED = {
             "Execution modes",
             "Slice decomposition",
             "slices.md",
+            "must never delegate review work to `Oracle`",
         ],
         "forbidden": [],
     },
@@ -92,6 +96,7 @@ EXPECTED = {
             "Bug-fix adaptation",
             "after `Hephaestus` has written the findings",
             "Do not delegate the review itself to `Oracle` or any other agent",
+            "Within the review-fix-re-review cycle, `Sisyphus` proceeds autonomously",
         ],
         "forbidden": [],
     },

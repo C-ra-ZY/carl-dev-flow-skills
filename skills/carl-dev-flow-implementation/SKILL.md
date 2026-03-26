@@ -23,6 +23,7 @@ For the shortest Chinese invocation form, see `templates/minimal-zh.md`.
 Sub-agents do focused implementation work.
 `Hephaestus` reviews integrated changes in parallel, challenges drift from the agreed documents, and helps prepare the codebase for the next review stage.
 That review stays with `Hephaestus`; specialists may advise on narrow questions, but they do not replace the review.
+`Sisyphus` must never delegate review work to `Oracle` or any other consultation agent; `Oracle` is for architecture and debugging questions, not for performing reviews.
 This skill is about turning agreed documents into well-scoped execution units and keeping the resulting code integrated and reviewable.
 
 ## Workflow
@@ -65,7 +66,7 @@ Do not declare this stage complete until:
 - if a sub-agent task fails while others succeed, integrate the successful parts, record the failure explicitly in the task plan, and re-delegate the failed task before declaring integration complete
 - do not silently drop failed task results or retry without documenting what went wrong
 
-When all exit criteria are met, consider using interactive questions to confirm readiness with the user before transitioning. This is recommended when verification results need user attention or when the implementation deviated from the original plan.
+When all exit criteria are met and the workflow is ready to enter `recursive-improvement`, interactive questions may be used to confirm readiness with the user in the same response. Before that stage boundary, continue implementation automatically. This is recommended when verification results need user attention or when the implementation deviated from the original plan.
 
 ## Artifact location
 

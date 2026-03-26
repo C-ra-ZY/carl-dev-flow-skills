@@ -26,6 +26,21 @@ For the shortest Chinese invocation form, see `templates/minimal-zh.md`.
 6. Fixes are implemented and then re-reviewed.
 7. Repeat until all three parties accept the code as deliverable.
 
+## Automation boundary
+
+Within the review-fix-re-review cycle, `Sisyphus` proceeds autonomously through each iteration.
+Do not pause for user confirmation between memo refinement, fix delegation, implementation integration, and re-review.
+Use interactive questions only when the loop is exiting toward delivery or another stage-level decision.
+
+## Review ownership constraint
+
+`Hephaestus` is the reviewer of record for this stage. This is non-negotiable.
+
+- `Hephaestus` must personally inspect the code, write the findings, and stand behind the review memo.
+- Do not delegate the review itself to `Oracle` or any other agent. `Oracle` is a consultation-only agent for architecture and debugging questions; `Sisyphus` must never delegate review work to `Oracle` or use it as a substitute for `Hephaestus` performing the review.
+- Specialist agents may advise on narrow technical questions after `Hephaestus` has written the findings, but their input is advisory only and does not replace `Hephaestus` as author of the review memo.
+- If `Sisyphus` needs to invoke review, it must invoke `Hephaestus` directly, never route the review through `Oracle` or any other agent.
+
 ## Review memo structure
 
 For each finding, record:
@@ -47,8 +62,7 @@ For each finding, record:
 ## Useful companion skills
 
 `code-review-expert` or `requesting-code-review` may help with memo formatting or repair tracking after `Hephaestus` has written the findings.
-They do not replace `Hephaestus` as reviewer of record.
-Do not delegate the review itself to `Oracle` or any other agent; `Hephaestus` must inspect the code, write the findings, and stand behind the memo.
+They do not replace `Hephaestus` as reviewer of record. See the review ownership constraint above.
 
 ## Exit criteria
 
@@ -59,7 +73,7 @@ Do not stop the loop until:
 - remaining issues are explicitly deferred and accepted
 - `Sisyphus`, `Hephaestus`, and the user all agree the code is at delivery level
 
-When all exit criteria are met, consider using interactive questions to confirm delivery readiness with the user. This is recommended when deferred issues exist or when the review involved multiple iteration rounds.
+When all exit criteria are met and the loop is ready to exit toward delivery, consider using interactive questions to confirm delivery readiness with the user. This is recommended when deferred issues exist or when the review involved multiple iteration rounds.
 
 ## Artifact location
 
@@ -80,4 +94,4 @@ When this stage is entered as part of a bug-fix workflow (routed from `carl-dev-
 2. Summarize what changed since the last review.
 3. Produce or refine the review memo.
 4. Drive the next repair or re-review step.
-5. When all exit criteria are met and the code is accepted as deliverable, use interactive questions to confirm delivery with the user and summarize the overall workflow outcome in the same response.
+5. When all exit criteria are met and the code is accepted as deliverable, use interactive questions to confirm the stage-exit delivery decision with the user and summarize the overall workflow outcome in the same response.

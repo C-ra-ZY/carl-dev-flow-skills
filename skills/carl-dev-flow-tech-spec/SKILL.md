@@ -67,7 +67,7 @@ Do not call the spec final until:
 - the user accepts the tradeoffs
 - any external advice is treated as advisory only, not as a substitute for `Hephaestus` review
 
-When promoting the artifact (draft to revised, or revised to final), consider using interactive questions to confirm the promotion with the user. This is recommended when the promotion involves significant changes or unresolved discussion points.
+When promoting the artifact within this stage (draft to revised, or revised to final), proceed automatically when the promotion conditions are clearly met and the user has already expressed agreement. Use interactive questions only when unresolved tradeoff, scope, or risk decisions still require user input.
 
 ## Artifact location
 
