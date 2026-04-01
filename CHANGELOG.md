@@ -20,6 +20,10 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   `Hephaestus` orchestration wording across the full seven-skill family
 - Public documentation and Chinese invocation templates updated to describe the
   new role contract
+- `GLOBAL_SISYPHUS_CONTINUITY_OVERRIDE.md` renamed to
+  `LEAD_AGENT_CONTINUITY_OVERRIDE.md` for role-neutral naming
+- Orchestration semantics fit within existing skill bodies; no companion skill
+  was needed
 
 ## [1.4.0] - 2026-03-20
 

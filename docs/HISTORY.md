@@ -112,6 +112,11 @@ The goal was not to erase the original design history, but to preserve the same
 artifact-driven workflow while remapping each role to a model/provider pairing
 that better matched the maintainers' current Copilot Pro Plus usage.
 
+A separate orchestration companion skill was considered in case the
+orchestration instructions became too heavy for the existing skill bodies.
+After implementation, the skill sizes stayed within the anti-drift threshold,
+so no companion was created.
+
 ## Design principles
 
 This repository follows a few important rules:

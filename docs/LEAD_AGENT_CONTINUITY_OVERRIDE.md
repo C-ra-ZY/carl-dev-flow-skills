@@ -1,8 +1,8 @@
 # Workflow-aware lead-agent continuity override
 
-This file keeps its legacy filename for compatibility, but the override below is
-role-neutral and intended for whichever agent currently owns workflow-level
-continuity. In the current contract, that lead agent is `Hephaestus`.
+The override below is role-neutral and intended for whichever agent currently
+owns workflow-level continuity. In the current contract, that lead agent is
+`Hephaestus`.
 
 ## Prompt text
 
