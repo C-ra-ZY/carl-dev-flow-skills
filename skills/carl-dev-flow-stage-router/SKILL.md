@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-stage-router
-description: Quickly identify the current stage of the Sisyphus and Hephaestus collaboration workflow and drive the next artifact or decision.
-version: 1.4.0
+description: Quickly identify the current stage of the Hephaestus-led collaboration workflow and drive the next artifact or decision
+version: 2.0.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -11,7 +11,7 @@ metadata:
 
 ## Purpose
 
-Use this skill as the fast entry point into the broader Sisyphus and Hephaestus workflow.
+Use this skill as the fast entry point into the broader Hephaestus, Oracle, and Sisyphus workflow.
 Use it for "start the workflow", "continue from here", or "which stage are we in" moments.
 
 For Chinese invocation examples, see `templates/zh_CN_INVOCATION.md` and `templates/minimal-zh.md`.
@@ -20,9 +20,10 @@ For Chinese invocation examples, see `templates/zh_CN_INVOCATION.md` and `templa
 
 1. Identify the current stage.
 2. Name the expected artifact for that stage.
-3. State which role should lead next.
-4. Drive the transition forward instead of stopping at summary.
-5. When routing to a new primary stage, use interactive questions to confirm the transition with the user in the same response rather than ending the conversation.
+3. State which lane should lead next.
+4. `Hephaestus` remains the workflow initiator even when the next active lane is `Oracle` review or `Sisyphus` execution.
+5. Drive the transition forward instead of stopping at summary.
+6. When routing to a new primary stage, use interactive questions to confirm the transition with the user in the same response rather than ending the conversation.
 
 ## Stage classifier
 
@@ -43,7 +44,7 @@ If the user is reporting a bug, regression, or unexpected behavior, load `carl-d
 When this skill is loaded, produce a short workflow handoff block with:
 
 - current stage
-- lead role now (`Sisyphus`, `Hephaestus`, or user-led with agent support)
+- lead lane now (`Hephaestus` orchestration, `Oracle` review, `Sisyphus` execution, or user-led with agent support)
 - current artifact
 - next artifact
 - immediate next action
@@ -62,4 +63,4 @@ When this skill is loaded, produce a short workflow handoff block with:
 - Do not leave the user with only a stage label; move the workflow forward.
 - Do not skip artifact naming.
 - Do not merge requirement questions into implementation planning unless the user explicitly chooses a shortcut.
-- When routing into `recursive-improvement`, keep `Hephaestus` as the reviewer of record. `Sisyphus` must never delegate review work to `Oracle` or any other agent; `Oracle` is a consultation tool for architecture and debugging, not a review substitute.
+- When routing into `recursive-improvement`, keep `Oracle` as the reviewer of record and keep `Hephaestus` as the workflow initiator. Review may not be delegated away from `Oracle`.

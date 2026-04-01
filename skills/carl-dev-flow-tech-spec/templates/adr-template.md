@@ -2,7 +2,8 @@
 
 - status: proposed | accepted | rejected
 - date: YYYY-MM-DD
-- decision-makers: [Sisyphus, Hephaestus, User]
+- decision-makers: [Hephaestus, Oracle, User]
+- consulted-implementer: [Sisyphus] | optional
 
 ## Context
 

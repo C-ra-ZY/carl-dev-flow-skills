@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-tech-spec
-description: Run the technical-confirmation stage where the user, Sisyphus, and Hephaestus converge on a final technical spec through draft, feasibility review, and revision.
-version: 1.4.0
+description: Run the technical-confirmation stage where Hephaestus leads design, Oracle reviews, and the user converges on a final technical spec
+version: 2.0.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -12,7 +12,7 @@ metadata:
 ## Purpose
 
 Use this skill after product requirements are stable enough to design the implementation strategy.
-This skill is the authoritative source for the detailed procedure of the `technical-confirmation` stage inside the Sisyphus and Hephaestus workflow family.
+This skill is the authoritative source for the detailed procedure of the `technical-confirmation` stage inside the Hephaestus-led workflow family.
 
 For the shortest Chinese invocation form, see `templates/minimal-zh.md`.
 
@@ -26,14 +26,15 @@ The technical artifact must evolve through:
 
 ## Workflow
 
-1. One agent leads the technical discussion with the user and writes the initial technical spec draft.
+1. `Hephaestus` leads the technical discussion with the user and writes the initial technical spec draft.
 2. Cover architecture, interfaces, storage, performance, operability, failure handling, and maintenance burden.
-3. The other core agent reviews for feasibility, hidden assumptions, and missing constraints.
-4. Revise the document in writing.
-5. The user, `Sisyphus`, and `Hephaestus` align on the revised spec.
-6. Produce the final technical spec only after unresolved issues are explicitly closed or deferred.
+3. `Oracle` reviews for feasibility, hidden assumptions, and missing constraints.
+4. If delivery complexity is material, `Sisyphus` contributes implementation-feasibility input before promotion.
+5. `Hephaestus` revises the document in writing and synthesizes unresolved issues.
+6. The user, `Hephaestus`, and `Oracle` align on the revised spec, consulting `Sisyphus` when implementation constraints matter.
+7. Produce the final technical spec only after unresolved issues are explicitly closed or deferred.
 
-The reviewer of record is `Hephaestus` (the other core agent), not an outside reviewer.
+The reviewer of record is `Oracle` (the review lane owner), not an outside reviewer.
 
 ## Review checklist
 
@@ -52,6 +53,7 @@ Always state:
 
 - the primary technical decision under review
 - why the proposed design was chosen
+- whether `Sisyphus` implementation-feasibility input was consulted
 - what risks remain
 - what changed since the last draft
 - what blocks promotion to final
@@ -65,7 +67,9 @@ Do not call the spec final until:
 - operational and failure behavior is defined
 - major alternatives have been considered, rejected, and recorded as ADRs with status `accepted`
 - the user accepts the tradeoffs
-- any external advice is treated as advisory only, not as a substitute for `Hephaestus` review
+- `Oracle` has had a review opportunity and `Hephaestus` has synthesized the resulting open issues
+- any material implementation-feasibility blocker raised by `Sisyphus` is resolved or explicitly deferred
+- any external advice is treated as advisory only, not as a substitute for `Oracle` review
 
 When promoting the artifact within this stage (draft to revised, or revised to final), proceed automatically when the promotion conditions are clearly met and the user has already expressed agreement. Use interactive questions only when unresolved tradeoff, scope, or risk decisions still require user input.
 
@@ -78,6 +82,7 @@ Store architecture decision records under `.carl/tech-spec/decisions/`.
 
 Record major architectural decisions as ADR files in `.carl/tech-spec/decisions/` using the template in `templates/adr-template.md`.
 Each ADR tracks status (`proposed`, `accepted`, `rejected`), options considered, and the chosen outcome with consequences.
+Default decision-makers are `Hephaestus`, `Oracle`, and the user; `Sisyphus` is consulted when implementation constraints materially affect the decision.
 Do not promote the technical spec to `final` until all referenced ADRs have status `accepted`.
 
 ## Bug-fix adaptation

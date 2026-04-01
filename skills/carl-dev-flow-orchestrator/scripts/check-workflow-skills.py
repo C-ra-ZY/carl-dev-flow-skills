@@ -9,7 +9,7 @@ from typing import NoReturn
 
 ROOT = Path(__file__).resolve().parents[2]
 
-SKILL_VERSION = "1.4.0"
+SKILL_VERSION = "2.0.0"
 
 EXPECTED = {
     "carl-dev-flow-orchestrator": {
@@ -21,8 +21,9 @@ EXPECTED = {
             "Artifact location convention",
             "State convention",
             ".carl/",
-            "review conclusions stay with `Hephaestus`",
-            "must never delegate review work to `Oracle`",
+            "review conclusions stay with `Oracle`",
+            "`Hephaestus` must never delegate review work away from `Oracle`",
+            "orchestration lead",
             "do not override intra-stage autonomous progression",
         ],
         "forbidden": [
@@ -34,7 +35,8 @@ EXPECTED = {
         "required": [
             f"version: {SKILL_VERSION}",
             "If no workflow artifacts exist yet, default to `requirements-development`.",
-            "must never delegate review work to `Oracle`",
+            "`Hephaestus` remains the workflow initiator",
+            "keep `Oracle` as the reviewer of record",
         ],
         "forbidden": [],
     },
@@ -42,7 +44,7 @@ EXPECTED = {
         "required": [
             f"version: {SKILL_VERSION}",
             "This skill is the authoritative source for the detailed procedure of the `requirements-development` stage",
-            "The reviewer of record is `Hephaestus`",
+            "The reviewer of record is `Oracle`",
             "stateful interaction behavior when conversations, edits, or branching flows exist",
             "side effects, suppression rules, or failure semantics when external actions or notifications exist",
             "Artifact location",
@@ -60,7 +62,7 @@ EXPECTED = {
         "required": [
             f"version: {SKILL_VERSION}",
             "This skill is the authoritative source for the detailed procedure of the `technical-confirmation` stage",
-            "The reviewer of record is `Hephaestus`",
+            "The reviewer of record is `Oracle`",
             "Artifact location",
             ".carl/tech-spec/",
             "ADR guidance",
@@ -73,7 +75,7 @@ EXPECTED = {
         "required": [
             f"version: {SKILL_VERSION}",
             "This skill is the authoritative source for the detailed procedure of the `development-execution` stage",
-            "`Hephaestus` reviews integrated changes in parallel",
+            "`Oracle` reviews integrated changes in parallel",
             "Artifact location",
             ".carl/implementation/",
             "Pre-edit checklist",
@@ -81,7 +83,7 @@ EXPECTED = {
             "Execution modes",
             "Slice decomposition",
             "slices.md",
-            "must never delegate review work to `Oracle`",
+            "`Hephaestus` is the master orchestration agent for this stage",
         ],
         "forbidden": [],
     },
@@ -94,9 +96,9 @@ EXPECTED = {
             "Artifact location",
             ".carl/review/",
             "Bug-fix adaptation",
-            "after `Hephaestus` has written the findings",
-            "Do not delegate the review itself to `Oracle` or any other agent",
-            "Within the review-fix-re-review cycle, `Sisyphus` proceeds autonomously",
+            "after `Oracle` has written the findings",
+            "Do not delegate the review itself away from `Oracle`",
+            "Within the review-fix-re-review cycle, `Hephaestus` proceeds autonomously",
         ],
         "forbidden": [],
     },
@@ -107,6 +109,7 @@ EXPECTED = {
             "Bug-fix principles",
             "Artifact location",
             ".carl/bugfix/",
+            "Review ownership stays with `Oracle`",
         ],
         "forbidden": [],
     },

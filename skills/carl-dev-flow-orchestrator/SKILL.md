@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-orchestrator
-description: Orchestrate the full multi-stage delivery workflow shared by Sisyphus, Hephaestus, and the user, while routing stage-specific work to narrower skills.
-version: 1.4.0
+description: Orchestrate the full multi-stage delivery workflow shared by Hephaestus, Oracle, Sisyphus, and the user, while routing stage-specific work to narrower skills
+version: 2.0.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -12,7 +12,7 @@ metadata:
 ## Purpose
 
 Use this as the top-level contract for the workflow family.
-It defines stage order, role boundaries, document lifecycle rules, and promotion logic.
+It defines stage order, role boundaries, lane ownership, document lifecycle rules, and promotion logic.
 Keep stage-specific procedures in the narrower subskills.
 
 For maintenance helpers and Chinese invocation examples, see the companion resources in this workflow family.
@@ -43,20 +43,28 @@ If a rule changes the lifecycle, role contract, or promotion logic across the wh
 
 ## Role contract
 
-### Sisyphus
+### Hephaestus
 
 - orchestration lead
 - planner and task decomposer
 - master agent for sub-agent delegation
-- owner of integration, sequencing, and repair coordination
+- owner of sequencing, synthesis, integration, and stage transitions
+- lead partner for turning review findings and execution results into the next workflow decision
 
-### Hephaestus
+### Oracle
 
 - independent reviewer and technical challenger
-- second-pass critic for requirements, specs, and code
+- reviewer of record for requirements, technical design, integrated code, and bug-fix verification
 - primary partner in recursive review loops
-- review conclusions stay with `Hephaestus`, even when specialist advice is consulted
-- `Sisyphus` must never delegate review work to `Oracle` or any other consultation agent; `Oracle` is for architecture and debugging consultation, not for performing reviews on behalf of `Hephaestus`
+- review conclusions stay with `Oracle`, even when specialist advice is consulted
+- `Hephaestus` must never delegate review work away from `Oracle`; specialist or consultation agents may advise, but they do not replace `Oracle` as reviewer of record
+
+### Sisyphus
+
+- technical striker and implementation specialist
+- owner of hard coding, difficult debugging, refactors, and fix execution
+- contributor of implementation-feasibility input during requirements and technical design when delivery risk is material
+- does not own final review judgment or stage-transition authority
 
 ### User
 
@@ -76,22 +84,22 @@ Recursive improvement must follow:
 
 Do not treat verbal agreement as sufficient. The artifact must be updated.
 `delegated fixes` refers to implementation work, not delegation of review ownership.
-Review ownership stays with `Hephaestus` throughout recursive improvement; `Sisyphus` must never delegate review work to `Oracle` or other agents as a substitute.
+Review ownership stays with `Oracle` throughout recursive improvement; `Hephaestus` must never delegate review work away from `Oracle` or treat advisory agents as review substitutes.
 
 ## Transition rules
 
 - Do not move into coding-heavy execution until requirements and technical direction are aligned, unless the user explicitly chooses a shortcut.
 - Do not close review after a single repair pass unless all three parties agree the code is deliverable.
 - When disagreement appears, write it down as an explicit open issue and resolve it in the artifact.
-- If `Sisyphus` and `Hephaestus` disagree on direction, present the disagreement clearly and let the user make the final decision.
+- If `Hephaestus` and `Oracle` disagree on direction, present the disagreement clearly and let the user make the final decision.
 
 ### Session continuity
 
-When a primary workflow stage completes and the workflow is ready to transition to the next stage, `Sisyphus` must use interactive questions within the same response to confirm the transition with the user. Do not end the response and wait for a new user message to continue. Present the transition as a clear choice — summarize what was accomplished, state the proposed next stage, and ask the user to confirm or adjust before proceeding.
+When a primary workflow stage completes and the workflow is ready to transition to the next stage, `Hephaestus` must use interactive questions within the same response to confirm the transition with the user. Do not end the response and wait for a new user message to continue. Present the transition as a clear choice — summarize what was accomplished, state the proposed next stage, and ask the user to confirm or adjust before proceeding.
 
 These session-continuity rules apply to stage transitions and workflow completion only. They do not override intra-stage autonomous progression defined by the narrower stage skills.
 
-At checkpoints that stay within the current stage (for example, promoting an artifact from draft to revised, or from revised to final), `Sisyphus` should proceed automatically when the promotion conditions are clearly met and the user has already expressed agreement. Use interactive questions inside a stage only when unresolved product, scope, or risk decisions still require user input.
+At checkpoints that stay within the current stage (for example, promoting an artifact from draft to revised, or from revised to final), `Hephaestus` should proceed automatically when the promotion conditions are clearly met and the user has already expressed agreement. Use interactive questions inside a stage only when unresolved product, scope, or risk decisions still require user input.
 
 ## Routing rules
 
@@ -100,6 +108,7 @@ At checkpoints that stay within the current stage (for example, promoting an art
 - For active coding coordination, load `carl-dev-flow-implementation`.
 - For review and fix loops, load `carl-dev-flow-review-loop`.
 - For bug-fix workflows, load `carl-dev-flow-bugfix`.
+- Keep the orchestration lane with `Hephaestus`, the review lane with `Oracle`, and the hard-execution lane with `Sisyphus`.
 
 ## Artifact location convention
 
@@ -121,7 +130,7 @@ The workflow tracks its current position in `.carl/state.md` with these fields:
 
 - `stage`: one of `requirements-development`, `technical-confirmation`, `development-execution`, `recursive-improvement`
 - `artifact-status`: `draft`, `revised`, or `final`
-- `last-updated-by`: `Sisyphus`, `Hephaestus`, or `User`
+- `last-updated-by`: `Hephaestus`, `Oracle`, `Sisyphus`, or `User`
 - `open-blockers`: list of unresolved items, or `none`
 
 The state file is descriptive, not prescriptive. Routing logic stays in `carl-dev-flow-stage-router`.
@@ -145,5 +154,5 @@ To minimize drift inside this skill family:
 
 1. Identify the current stage.
 2. Restate the artifact expected at that stage.
-3. Name the role that should lead next and load the matching subskill when needed.
+3. Name which lane should lead next (`Hephaestus`, `Oracle`, or `Sisyphus`) and load the matching subskill when needed.
 4. Drive the workflow forward instead of stopping at description.

@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository contains a family of six OpenCode workflow skills. All changes
+This repository contains a family of seven OpenCode workflow skills. All changes
 must keep the family consistent and pass the drift checker.
 
 ## Making changes
@@ -14,6 +14,7 @@ must keep the family consistent and pass the drift checker.
    - **Lifecycle, role contract, or transition rules** → edit `carl-dev-flow-orchestrator`
    - **Stage detection or routing** → edit `carl-dev-flow-stage-router`
    - Do not duplicate stage-specific detail in the orchestrator
+   - If the role contract changes, update the orchestrator, drift checker, and published docs together
 
 2. Preserve required frontmatter keys: `name`, `description`, `version`, `compatibility`, `license`, `metadata`
 
@@ -25,9 +26,9 @@ python3 skills/carl-dev-flow-orchestrator/scripts/check-workflow-skills.py
 
 ### Version bumps
 
-All six SKILL.md files must declare the same `version`. When bumping:
+All seven SKILL.md files must declare the same `version`. When bumping:
 
-1. Update `version:` in all six `SKILL.md` files
+1. Update `version:` in all seven `SKILL.md` files
 2. Update `SKILL_VERSION` in `scripts/check-workflow-skills.py`
 3. Run the drift checker to confirm consistency
 4. Update `CHANGELOG.md`

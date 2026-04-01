@@ -1,4 +1,4 @@
-# Sisyphus + Hephaestus Workflow 中文快速调用模板
+# Hephaestus + Oracle + Sisyphus Workflow 中文快速调用模板
 
 这份模板用于快速触发整套 workflow family，减少每次都要重新组织提示词的负担。
 
@@ -9,7 +9,7 @@
 当前还没有 requirements 或 technical spec，请从 requirements-development 开始。
 目标：<一句话描述需求>
 约束：<时间/技术/产品约束>
-输出：先给出 requirements draft，然后进入双 agent review。
+输出：先给出 requirements draft，然后进入 Hephaestus 主导、Oracle 审查的收敛流程。
 ```
 
 ## 2. 继续当前流程，但不确定卡在哪个阶段
@@ -25,7 +25,7 @@
 ```text
 请加载 carl-dev-flow-requirements。
 我要先把需求文档打磨清楚，再进入技术方案。
-请你主导问答澄清，产出 requirements draft，并安排另一位 agent 做独立 review。
+请由 Hephaestus 主导问答澄清，产出 requirements draft，并安排 Oracle 做独立 review。
 ```
 
 ## 4. 进入技术方案确认阶段
@@ -33,7 +33,7 @@
 ```text
 请加载 carl-dev-flow-tech-spec。
 需求已经基本稳定，现在需要形成 technical spec draft。
-请覆盖架构、接口、失败处理、可运维性、性能假设，并组织双 agent review。
+请由 Hephaestus 主导 technical spec draft，覆盖架构、接口、失败处理、可运维性、性能假设，并组织 Oracle review；如实现复杂度会反向约束方案，可引入 Sisyphus 做可实现性反馈。
 ```
 
 ## 5. 进入开发执行阶段
@@ -41,22 +41,22 @@
 ```text
 请加载 carl-dev-flow-implementation。
 requirements final 和 technical spec final 已经就绪。
-请把实现拆成细粒度任务，明确依赖顺序、验收标准和验证方式，然后推进编码执行。
+请由 Hephaestus 把实现拆成细粒度任务，明确依赖顺序、验收标准和验证方式，并把高难度编码与修复执行优先交给 Sisyphus。
 ```
 
 ## 6. 进入递归评审和修复阶段
 
 ```text
 请加载 carl-dev-flow-review-loop。
-当前代码已经有实现，请组织 Hephaestus + 用户先产出 review memo draft，
-再由 Sisyphus 做独立复核，形成 agreed review memo，随后拆解修复并进入下一轮复审。
-Hephaestus 是主要审查者；如需额外专家意见，只能作为顾问性输入，不能替代 Hephaestus 自己完成 review。
+当前代码已经有实现，请组织 Oracle + 用户先产出 review memo draft，
+再由 Hephaestus 综合 findings、拆解修复，并交给 Sisyphus 执行，随后进入下一轮复审。
+Oracle 是主要审查者；如需额外专家意见，只能作为顾问性输入，不能替代 Oracle 自己完成 review。
 ```
 
 ## 7. 明确仲裁规则
 
 ```text
-如果 Sisyphus 和 Hephaestus 对方案或修复方向有分歧，请把分歧明确写出来，
+如果 Hephaestus 和 Oracle 对方案或修复方向有分歧，请把分歧明确写出来，
 然后由我做最终裁决，并把我的决定写回 artifact 或 review memo。
 ```
 

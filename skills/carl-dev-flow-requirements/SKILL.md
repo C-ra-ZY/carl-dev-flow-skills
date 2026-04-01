@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-requirements
-description: Run the requirements-development stage where the user, Sisyphus, and Hephaestus converge on a final requirements document through draft, review, and revision.
-version: 1.4.0
+description: Run the requirements-development stage where Hephaestus leads discovery, Oracle reviews, and the user converges on a final requirements document
+version: 2.0.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -12,7 +12,7 @@ metadata:
 ## Purpose
 
 Use this skill when business intent, behavior boundaries, edge cases, or acceptance expectations are still being shaped.
-This skill is the authoritative source for the detailed procedure of the `requirements-development` stage inside the Sisyphus and Hephaestus workflow family.
+This skill is the authoritative source for the detailed procedure of the `requirements-development` stage inside the Hephaestus-led workflow family.
 
 For the shortest Chinese invocation form, see `templates/minimal-zh.md`.
 
@@ -26,14 +26,15 @@ The requirements artifact must evolve through:
 
 ## Workflow
 
-1. One agent leads discovery with the user and writes the initial draft.
-2. The other core agent reviews the draft without being the original author.
+1. `Hephaestus` leads discovery with the user and writes the initial draft.
+2. `Oracle` reviews the draft without being the original author.
 3. The reviewer normalizes structure, checks logic flow, and hunts for missing edge cases.
-4. Revise the document in writing.
-5. The user, `Sisyphus`, and `Hephaestus` align on the revised draft.
-6. Produce the final requirements document only after open issues are resolved or explicitly deferred.
+4. If delivery complexity is material, `Sisyphus` contributes implementation-feasibility input before promotion.
+5. `Hephaestus` revises the document in writing and synthesizes open issues.
+6. The user, `Hephaestus`, and `Oracle` align on the revised draft, consulting `Sisyphus` when implementation constraints matter.
+7. Produce the final requirements document only after open issues are resolved or explicitly deferred.
 
-The reviewer of record is `Hephaestus` (the other core agent), not an outside reviewer.
+The reviewer of record is `Oracle` (the review lane owner), not an outside reviewer.
 
 ## What the reviewer must check
 
@@ -51,6 +52,7 @@ Always state:
 
 - who authored the current draft
 - who is reviewing it
+- whether `Sisyphus` implementation-feasibility input was consulted
 - unresolved questions
 - what changed since the last draft
 - what conditions are needed to promote to final
@@ -62,8 +64,9 @@ Do not call the document final until:
 - major terms are defined
 - edge cases are either resolved or explicitly deferred
 - the user confirms the behavior matches intent
-- both `Sisyphus` and `Hephaestus` have had a review opportunity
-- any external advice is treated as advisory only, not as a substitute for `Hephaestus` review
+- `Oracle` has had a review opportunity and `Hephaestus` has synthesized the resulting open issues
+- any material implementation-feasibility blocker raised by `Sisyphus` is resolved or explicitly deferred
+- any external advice is treated as advisory only, not as a substitute for `Oracle` review
 
 When promoting the artifact within this stage (draft to revised, or revised to final), proceed automatically when the promotion conditions are clearly met and the user has already expressed agreement. Use interactive questions only when unresolved product or scope decisions still require user input.
 
@@ -118,7 +121,7 @@ If the user already has a clear, detailed specification or explicitly asks to sk
 
 1. Identify the current stage from artifacts and conversation context.
 2. Restate the artifact expected at this stage.
-3. Name who authored the current draft and who is reviewing it.
+3. Name who authored the current draft, who is reviewing it, and whether `Sisyphus` input is needed.
 4. If no draft exists yet, begin the Pre-draft interrogation procedure.
 5. Drive the next discovery, review, or promotion step forward.
 6. When the requirements document reaches `final` and the stage is complete, use interactive questions to confirm the transition to `technical-confirmation` with the user in the same response.

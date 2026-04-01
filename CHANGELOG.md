@@ -4,6 +4,34 @@ All notable changes to the carl-dev-flow-skills family will be documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [2.0.0] - 2026-04-01
+
+### Changed
+
+- Workflow contract inverted for the Copilot-first workflow model:
+  - `Hephaestus` is now the orchestration lead and stage-transition owner
+  - `Oracle` is now the reviewer of record for requirements, technical design,
+    integrated code, and bug-fix verification
+  - `Sisyphus` is now the technical striker for hard implementation and repair
+    execution
+- Orchestrator, stage router, and all stage skills rewritten around explicit
+  orchestration / review / execution lanes
+- Drift checker updated to enforce `Oracle` review ownership and
+  `Hephaestus` orchestration wording across the full seven-skill family
+- Public documentation and Chinese invocation templates updated to describe the
+  new role contract
+
+## [1.4.0] - 2026-03-20
+
+### Changed
+
+- Skill family compressed for lower token usage while preserving the staged
+  artifact workflow
+- Review ownership clarified around `Hephaestus` across the pre-2.0 workflow
+  line
+- Session continuity rules added so stage transitions use interactive questions
+  while intra-stage progression remains autonomous
+
 ## [1.3.0] - 2025-03-18
 
 ### Added

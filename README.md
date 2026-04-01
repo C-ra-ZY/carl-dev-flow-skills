@@ -1,6 +1,6 @@
 # carl-dev-flow-skills
 
-A reusable AI workflow skill family for the [OpenCode](https://github.com/nicholasgriffintn/opencode) platform. It coordinates a multi-stage collaboration model between a user, **Sisyphus** (orchestration lead), and **Hephaestus** (reviewer/challenger).
+A reusable AI workflow skill family for the [OpenCode](https://github.com/nicholasgriffintn/opencode) platform. It coordinates a multi-stage collaboration model between a user, **Hephaestus** (orchestration lead), **Oracle** (reviewer/challenger), and **Sisyphus** (technical striker).
 
 ## What it does
 
@@ -31,7 +31,7 @@ cp -r skills/carl-dev-flow-* ~/.config/opencode/skills/
 2. In an OpenCode session, load the orchestrator or router:
 
 ```
-Load carl-dev-flow-orchestrator and drive the workflow forward.
+Load carl-dev-flow-orchestrator and let Hephaestus drive the workflow forward.
 ```
 
 Or start from stage detection:

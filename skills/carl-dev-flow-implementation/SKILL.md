@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-implementation
-description: Run the development-execution stage where Sisyphus decomposes implementation into fine-grained tasks, delegates coding work, and integrates results against the agreed requirements and technical spec.
-version: 1.4.0
+description: Run the development-execution stage where Hephaestus orchestrates delivery, Sisyphus executes hard implementation work, and Oracle reviews integrated changes
+version: 2.0.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -12,27 +12,28 @@ metadata:
 ## Purpose
 
 Use this skill after requirements and technical direction are aligned and the work is ready to move into coding execution.
-This skill is the authoritative source for the detailed procedure of the `development-execution` stage inside the Sisyphus and Hephaestus workflow family.
+This skill is the authoritative source for the detailed procedure of the `development-execution` stage inside the Hephaestus-led workflow family.
 
 For the shortest Chinese invocation form, see `templates/minimal-zh.md`.
 
 ## Core model
 
-`Sisyphus` is the master agent for this stage.
+`Hephaestus` is the master orchestration agent for this stage.
 
-Sub-agents do focused implementation work.
-`Hephaestus` reviews integrated changes in parallel, challenges drift from the agreed documents, and helps prepare the codebase for the next review stage.
-That review stays with `Hephaestus`; specialists may advise on narrow questions, but they do not replace the review.
-`Sisyphus` must never delegate review work to `Oracle` or any other consultation agent; `Oracle` is for architecture and debugging questions, not for performing reviews.
+`Sisyphus` is the primary execution specialist for hard implementation, debugging, refactors, and repair work.
+Sub-agents do focused implementation work under `Hephaestus` orchestration.
+`Oracle` reviews integrated changes in parallel, challenges drift from the agreed documents, and helps prepare the codebase for the next review stage.
+That review stays with `Oracle`; specialists may advise on narrow questions, but they do not replace the review.
+`Hephaestus` must never delegate review work away from `Oracle` or treat consultation output as a substitute for `Oracle` findings.
 This skill is about turning agreed documents into well-scoped execution units and keeping the resulting code integrated and reviewable.
 
 ## Workflow
 
 1. Confirm that requirements final and technical spec final exist, or that the user explicitly chose an accepted shortcut.
 2. Break the implementation into fine-grained tasks and order them by dependency and risk.
-3. Delegate concrete coding tasks to sub-agents with clear scope and acceptance criteria.
+3. Delegate concrete coding tasks to `Sisyphus` or other execution sub-agents with clear scope and acceptance criteria.
 4. Integrate the resulting changes into a coherent working state.
-5. Verify the integrated result against requirements and technical spec, then prepare for `recursive-improvement`.
+5. Verify the integrated result against requirements and technical spec, then prepare the integrated checkpoint for `Oracle` review and `recursive-improvement`.
 
 ## Task-splitting rules
 
@@ -53,7 +54,7 @@ Every delegated implementation task should state:
 - required verification
 - forbidden shortcuts
 
-Delegation here applies to implementation tasks only. Final review judgment and acceptance stay with `Hephaestus` and the user-facing workflow owners.
+Delegation here applies to implementation tasks only. Final review judgment and acceptance stay with `Oracle`, `Hephaestus`, and the user-facing workflow owners.
 
 ## Exit criteria
 

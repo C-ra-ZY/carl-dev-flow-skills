@@ -3,10 +3,11 @@
 ## Project Overview
 
 This repository contains a family of AI workflow skills for the OpenCode platform.
-The skills coordinate a multi-stage collaboration model between a user, `Sisyphus`
-(orchestration lead), and `Hephaestus` (reviewer/challenger). There is no runtime
-application code — the primary artifacts are Markdown skill definitions and one
-Python validation script.
+The skills coordinate a multi-stage collaboration model between a user,
+`Hephaestus` (orchestration lead), `Oracle` (reviewer/challenger), and
+`Sisyphus` (technical striker). There is no runtime application code — the
+primary artifacts are Markdown skill definitions and one Python validation
+script.
 
 ## Repository Layout
 
@@ -64,7 +65,7 @@ python3 skills/carl-dev-flow-orchestrator/scripts/check-workflow-skills.py
 The checker validates:
 - All seven skill directories exist with a `SKILL.md`
 - Each `SKILL.md` has required YAML frontmatter keys and required values
-- Versions are consistent across the family (currently `1.3.0`)
+- Versions are consistent across the family (currently `2.0.0`)
 - Required wording is present in each skill
 - Forbidden wording is absent
 - Expected Chinese invocation templates and stage skeleton templates exist
@@ -95,7 +96,7 @@ Every skill file uses this structure:
 ---
 name: carl-dev-flow-{slug}
 description: One-line description of the skill.
-version: 1.3.0
+version: 2.0.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -145,7 +146,7 @@ this. When bumping the version, update all seven files in a single change.
 
 - Skill directories: `carl-dev-flow-{slug}` (lowercase, hyphen-separated)
 - Stage names in prose: backtick-quoted, e.g. `` `requirements-development` ``
-- Role names in prose: backtick-quoted, e.g. `` `Sisyphus` ``, `` `Hephaestus` ``
+- Role names in prose: backtick-quoted, e.g. `` `Hephaestus` ``, `` `Oracle` ``, `` `Sisyphus` ``
 
 ### Markdown Style
 
@@ -203,6 +204,9 @@ The single Python file follows these conventions:
   the stage subskill instead.
 - **Version mismatch**: Editing one SKILL.md version without updating all seven
   will fail the drift checker.
+- **Partial role-contract edits**: Changing role ownership in a stage skill
+  without updating the orchestrator, drift checker, and public docs will create
+  inconsistent workflow semantics.
 - **Adding forbidden wording**: The checker blocks specific phrases in certain
   skills (e.g., "requirements draft" in orchestrator). Check `EXPECTED` dict in
   `check-workflow-skills.py` before adding content.

@@ -95,6 +95,23 @@ The skill family was copied out of the runtime config directory into its own
 repository. From this point forward, this repository is the canonical editable
 codebase, while local runtime installation can later become a derived step.
 
+### 8. Copilot-first orchestration remap
+
+The public repository later underwent a workflow-contract redesign for a
+Copilot-first setup.
+
+That redesign intentionally inverted the original role split:
+
+- `Hephaestus` became the orchestration lead and high-level workflow driver
+- `Oracle` became the reviewer of record for requirements, technical design,
+  integrated code, and bug-fix verification
+- `Sisyphus` became the technical striker responsible for hard implementation
+  and repair execution
+
+The goal was not to erase the original design history, but to preserve the same
+artifact-driven workflow while remapping each role to a model/provider pairing
+that better matched the maintainers' current Copilot Pro Plus usage.
+
 ## Design principles
 
 This repository follows a few important rules:

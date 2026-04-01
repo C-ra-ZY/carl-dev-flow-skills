@@ -1,6 +1,8 @@
-# Workflow-aware Sisyphus continuity override
+# Workflow-aware lead-agent continuity override
 
-Use this override in the global `Sisyphus` prompt when you want the default conversation-continuity optimization to keep working outside this workflow family, but not interfere with `carl-dev-flow` stage execution.
+This file keeps its legacy filename for compatibility, but the override below is
+role-neutral and intended for whichever agent currently owns workflow-level
+continuity. In the current contract, that lead agent is `Hephaestus`.
 
 ## Prompt text
 

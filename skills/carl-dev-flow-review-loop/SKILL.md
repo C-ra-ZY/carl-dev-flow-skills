@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-review-loop
-description: Run repeated code review, discussion, repair, and re-review cycles until Sisyphus, Hephaestus, and the user agree the code is ready for delivery.
-version: 1.4.0
+description: Run repeated code review, discussion, repair, and re-review cycles until Hephaestus, Oracle, and the user agree the code is ready for delivery
+version: 2.0.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -12,34 +12,34 @@ metadata:
 ## Purpose
 
 Use this skill after implementation exists and the goal is to iterate until delivery quality is accepted.
-This skill is the authoritative source for the detailed procedure of the `recursive-improvement` stage inside the Sisyphus and Hephaestus workflow family.
+This skill is the authoritative source for the detailed procedure of the `recursive-improvement` stage inside the Hephaestus-led workflow family.
 
 For the shortest Chinese invocation form, see `templates/minimal-zh.md`.
 
 ## Core loop
 
-1. `Hephaestus` and the user review the current code.
-2. `Hephaestus` produces the review memo draft and owns the first review judgment.
-3. `Sisyphus` reviews that memo independently and states agreement, disagreement, and additions.
-4. The user and `Sisyphus` align on the agreed review memo.
-5. `Sisyphus` decomposes approved fixes and delegates them to sub-agents.
-6. Fixes are implemented and then re-reviewed.
+1. `Oracle` and the user review the current code.
+2. `Oracle` produces the review memo draft and owns the first review judgment.
+3. `Hephaestus` triages that memo, states agreement, disagreement, and the planned repair sequence.
+4. The user and `Hephaestus` align on the agreed review memo.
+5. `Hephaestus` decomposes approved fixes and delegates them to `Sisyphus` or other execution sub-agents.
+6. Fixes are implemented and then re-reviewed by `Oracle`.
 7. Repeat until all three parties accept the code as deliverable.
 
 ## Automation boundary
 
-Within the review-fix-re-review cycle, `Sisyphus` proceeds autonomously through each iteration.
+Within the review-fix-re-review cycle, `Hephaestus` proceeds autonomously through each iteration.
 Do not pause for user confirmation between memo refinement, fix delegation, implementation integration, and re-review.
 Use interactive questions only when the loop is exiting toward delivery or another stage-level decision.
 
 ## Review ownership constraint
 
-`Hephaestus` is the reviewer of record for this stage. This is non-negotiable.
+`Oracle` is the reviewer of record for this stage. This is non-negotiable.
 
-- `Hephaestus` must personally inspect the code, write the findings, and stand behind the review memo.
-- Do not delegate the review itself to `Oracle` or any other agent. `Oracle` is a consultation-only agent for architecture and debugging questions; `Sisyphus` must never delegate review work to `Oracle` or use it as a substitute for `Hephaestus` performing the review.
-- Specialist agents may advise on narrow technical questions after `Hephaestus` has written the findings, but their input is advisory only and does not replace `Hephaestus` as author of the review memo.
-- If `Sisyphus` needs to invoke review, it must invoke `Hephaestus` directly, never route the review through `Oracle` or any other agent.
+- `Oracle` must personally inspect the code, write the findings, and stand behind the review memo.
+- Do not delegate the review itself away from `Oracle` to any other agent. `Hephaestus` must not rewrite or override `Oracle` findings before the user sees them.
+- Specialist agents may advise on narrow technical questions after `Oracle` has written the findings, but their input is advisory only and does not replace `Oracle` as author of the review memo.
+- If `Hephaestus` needs to invoke review, it must invoke `Oracle` directly, never route the review through another agent.
 
 ## Review memo structure
 
@@ -61,8 +61,8 @@ For each finding, record:
 
 ## Useful companion skills
 
-`code-review-expert` or `requesting-code-review` may help with memo formatting or repair tracking after `Hephaestus` has written the findings.
-They do not replace `Hephaestus` as reviewer of record. See the review ownership constraint above.
+`code-review-expert` or `requesting-code-review` may help with memo formatting or repair tracking after `Oracle` has written the findings.
+They do not replace `Oracle` as reviewer of record. See the review ownership constraint above.
 
 ## Exit criteria
 
@@ -71,7 +71,7 @@ Do not stop the loop until:
 - approved findings are fixed
 - no unresolved blocking issue remains
 - remaining issues are explicitly deferred and accepted
-- `Sisyphus`, `Hephaestus`, and the user all agree the code is at delivery level
+- `Hephaestus`, `Oracle`, and the user all agree the code is at delivery level
 
 When all exit criteria are met and the loop is ready to exit toward delivery, consider using interactive questions to confirm delivery readiness with the user. This is recommended when deferred issues exist or when the review involved multiple iteration rounds.
 

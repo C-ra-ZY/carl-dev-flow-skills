@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-bugfix
 description: Coordinate bug-fix workflows by grading severity, selecting the appropriate fix path, and routing to existing stage skills with bug-fix context
-version: 1.4.0
+version: 2.0.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -31,15 +31,15 @@ When severity is ambiguous, default to complex.
 
 1. Write a brief reproduction note (inline, no formal artifact needed).
 2. Proceed directly to `development-execution` with bug-fix context.
-3. Enter `recursive-improvement` for regression verification.
+3. Enter `recursive-improvement` for regression verification with `Oracle` as reviewer of record.
 4. Record the shortcut in `.carl/state.md`.
 
 ### Complex path
 
 1. **Bug report** — use `carl-dev-flow-requirements` in bug-fix mode: capture reproduction steps, expected vs actual behavior, and acceptance criteria for the fix.
 2. **Root cause analysis** — use `carl-dev-flow-tech-spec` in bug-fix mode: identify root cause, assess blast radius, and define a minimal fix strategy.
-3. **Fix implementation** — use `carl-dev-flow-implementation` in bug-fix mode: apply the minimal fix, avoid unrelated refactoring, and establish a regression baseline.
-4. **Fix verification** — use `carl-dev-flow-review-loop` in bug-fix mode: verify the fix resolves the reported behavior, confirm no regressions, check blast radius assumptions, and keep `Hephaestus` as reviewer of record.
+3. **Fix implementation** — use `carl-dev-flow-implementation` in bug-fix mode: apply the minimal fix through `Sisyphus` or another execution agent, avoid unrelated refactoring, and establish a regression baseline.
+4. **Fix verification** — use `carl-dev-flow-review-loop` in bug-fix mode: verify the fix resolves the reported behavior, confirm no regressions, check blast radius assumptions, and keep `Oracle` as reviewer of record.
 
 ## Routing rules
 
@@ -57,7 +57,7 @@ Each of these skills has a `Bug-fix adaptation` section that describes how its s
 - Establish a regression baseline before applying the fix.
 - Assess blast radius before committing to a fix strategy.
 - If the fix introduces new risk, escalate severity from lightweight to complex.
-- Review ownership stays with `Hephaestus`; outside advice is supplemental.
+- Review ownership stays with `Oracle`; `Hephaestus` selects the path and `Sisyphus` executes the fix. Outside advice is supplemental.
 
 ## Artifact location
 
@@ -71,7 +71,7 @@ Do not declare a bug-fix complete until:
 - the reported behavior is verified as resolved
 - regression verification has passed
 - no new issues were introduced by the fix
-- `Sisyphus`, `Hephaestus`, and the user agree the fix is deliverable
+- `Hephaestus`, `Oracle`, and the user agree the fix is deliverable
 
 ## Default behavior when loaded
 
