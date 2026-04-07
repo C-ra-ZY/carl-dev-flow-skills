@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-orchestrator
 description: Orchestrate the full multi-stage delivery workflow shared by Hephaestus, Oracle, Sisyphus, and the user, while routing stage-specific work to narrower skills
-version: 2.0.0
+version: 2.1.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -92,10 +92,14 @@ Review ownership stays with `Oracle` throughout recursive improvement; `Hephaest
 - Do not close review after a single repair pass unless all three parties agree the code is deliverable.
 - When disagreement appears, write it down as an explicit open issue and resolve it in the artifact.
 - If `Hephaestus` and `Oracle` disagree on direction, present the disagreement clearly and let the user make the final decision.
+- When a stage reaches its exit conditions and the next primary stage is unambiguous, automatically enter that stage in the same response.
+- Pause at a stage boundary only when a fresh user decision, explicit arbitration, or shortcut choice is still required.
 
 ### Session continuity
 
-When a primary workflow stage completes and the workflow is ready to transition to the next stage, `Hephaestus` must use interactive questions within the same response to confirm the transition with the user. Do not end the response and wait for a new user message to continue. Present the transition as a clear choice — summarize what was accomplished, state the proposed next stage, and ask the user to confirm or adjust before proceeding.
+When a primary workflow stage completes and the next primary stage is clear, `Hephaestus` should automatically enter that stage in the same response and start the first concrete next-step action.
+
+Use the `ask question` interaction only when a stage boundary or workflow completion still requires user input, explicit arbitration, or a follow-up choice. When used, ask inside the same response to keep the current conversation alive rather than ending the turn.
 
 These session-continuity rules apply to stage transitions and workflow completion only. They do not override intra-stage autonomous progression defined by the narrower stage skills.
 
@@ -155,4 +159,4 @@ To minimize drift inside this skill family:
 1. Identify the current stage.
 2. Restate the artifact expected at that stage.
 3. Name which lane should lead next (`Hephaestus`, `Oracle`, or `Sisyphus`) and load the matching subskill when needed.
-4. Drive the workflow forward instead of stopping at description.
+4. Drive the workflow forward instead of stopping at description, automatically entering the next stage when the path is clear.

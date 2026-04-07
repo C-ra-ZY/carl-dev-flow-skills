@@ -9,7 +9,7 @@ from typing import NoReturn
 
 ROOT = Path(__file__).resolve().parents[2]
 
-SKILL_VERSION = "2.0.0"
+SKILL_VERSION = "2.1.0"
 
 EXPECTED = {
     "carl-dev-flow-orchestrator": {
@@ -25,6 +25,8 @@ EXPECTED = {
             "`Hephaestus` must never delegate review work away from `Oracle`",
             "orchestration lead",
             "do not override intra-stage autonomous progression",
+            "automatically enter that stage in the same response",
+            "Use the `ask question` interaction only when",
         ],
         "forbidden": [
             "requirements draft",
@@ -37,6 +39,7 @@ EXPECTED = {
             "If no workflow artifacts exist yet, default to `requirements-development`.",
             "`Hephaestus` remains the workflow initiator",
             "keep `Oracle` as the reviewer of record",
+            "enter it automatically when the next stage is clear",
         ],
         "forbidden": [],
     },
