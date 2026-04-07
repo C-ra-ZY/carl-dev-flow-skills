@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-bugfix
 description: Coordinate bug-fix workflows by grading severity, selecting the appropriate fix path, and routing to existing stage skills with bug-fix context
-version: 2.0.0
+version: 2.1.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -79,4 +79,4 @@ Do not declare a bug-fix complete until:
 2. Grade the severity as lightweight or complex.
 3. Select the appropriate fix path.
 4. Drive the first step of that path forward.
-5. At each path transition that changes the primary workflow stage or severity handling path (for example, moving from bug report to root cause analysis, or from fix implementation to fix verification), consider using interactive questions to confirm the next step with the user in the same response. For internal steps that stay within the current stage, continue automatically. This is recommended when the transition involves a severity change or when the path selection was ambiguous.
+5. At each path transition that changes the primary workflow stage or severity handling path (for example, moving from bug report to root cause analysis, or from fix implementation to fix verification), automatically enter the next stage when the path is clear and no new user decision is required. For internal steps that stay within the current stage, continue automatically. Use the `ask question` interaction only when the transition involves a severity change, ambiguous path selection, or workflow-closeout input.

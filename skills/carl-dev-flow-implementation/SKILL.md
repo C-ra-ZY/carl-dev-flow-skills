@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-implementation
 description: Run the development-execution stage where Hephaestus orchestrates delivery, Sisyphus executes hard implementation work, and Oracle reviews integrated changes
-version: 2.0.0
+version: 2.1.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -67,7 +67,7 @@ Do not declare this stage complete until:
 - if a sub-agent task fails while others succeed, integrate the successful parts, record the failure explicitly in the task plan, and re-delegate the failed task before declaring integration complete
 - do not silently drop failed task results or retry without documenting what went wrong
 
-When all exit criteria are met and the workflow is ready to enter `recursive-improvement`, interactive questions may be used to confirm readiness with the user in the same response. Before that stage boundary, continue implementation automatically. This is recommended when verification results need user attention or when the implementation deviated from the original plan.
+When all exit criteria are met and the workflow is ready to enter `recursive-improvement`, automatically enter that stage in the same response. Use the `ask question` interaction only when verification results need a user decision or when the implementation deviated materially from the agreed plan.
 
 ## Artifact location
 
@@ -150,4 +150,4 @@ When this stage is entered as part of a bug-fix workflow (routed from `carl-dev-
 2. Assess current implementation progress against the task breakdown.
 3. Identify the next task to delegate or integrate.
 4. Drive execution forward rather than stopping at planning.
-5. When all exit criteria are met, use interactive questions to confirm the transition to `recursive-improvement` with the user in the same response.
+5. When all exit criteria are met, automatically enter `recursive-improvement` unless a user decision is still required. If it is, use the `ask question` interaction in the same response.

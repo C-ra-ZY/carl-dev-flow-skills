@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-review-loop
 description: Run repeated code review, discussion, repair, and re-review cycles until Hephaestus, Oracle, and the user agree the code is ready for delivery
-version: 2.0.0
+version: 2.1.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -30,7 +30,7 @@ For the shortest Chinese invocation form, see `templates/minimal-zh.md`.
 
 Within the review-fix-re-review cycle, `Hephaestus` proceeds autonomously through each iteration.
 Do not pause for user confirmation between memo refinement, fix delegation, implementation integration, and re-review.
-Use interactive questions only when the loop is exiting toward delivery or another stage-level decision.
+Use the `ask question` interaction only when the loop is exiting toward delivery, a new stage-level decision is required, or workflow completion needs a follow-up choice.
 
 ## Review ownership constraint
 
@@ -73,7 +73,7 @@ Do not stop the loop until:
 - remaining issues are explicitly deferred and accepted
 - `Hephaestus`, `Oracle`, and the user all agree the code is at delivery level
 
-When all exit criteria are met and the loop is ready to exit toward delivery, consider using interactive questions to confirm delivery readiness with the user. This is recommended when deferred issues exist or when the review involved multiple iteration rounds.
+When all exit criteria are met and the loop is ready to exit toward delivery, use the `ask question` interaction to summarize delivery readiness and keep the conversation alive unless the user has already explicitly ended the workflow. This is recommended when deferred issues exist or when the review involved multiple iteration rounds.
 
 ## Artifact location
 
@@ -94,4 +94,4 @@ When this stage is entered as part of a bug-fix workflow (routed from `carl-dev-
 2. Summarize what changed since the last review.
 3. Produce or refine the review memo.
 4. Drive the next repair or re-review step.
-5. When all exit criteria are met and the code is accepted as deliverable, use interactive questions to confirm the stage-exit delivery decision with the user and summarize the overall workflow outcome in the same response.
+5. When all exit criteria are met and the code is accepted as deliverable, use the `ask question` interaction to confirm follow-up or closeout options in the same response and summarize the overall workflow outcome.
