@@ -4,6 +4,15 @@ All notable changes to the carl-dev-flow-skills family will be documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [2.1.0] - 2026-04-07
+
+### Changed
+
+- `Hephaestus` continuity guidance now prefers the `ask question` interaction at workflow completion or true boundary decisions, so the same conversation stays alive instead of ending abruptly
+- Cross-stage workflow semantics now auto-enter the next stage when the path is clear, while reserving boundary questions for unresolved decisions, arbitration, or closeout choices
+- Stage router, stage skills, and continuity override docs updated to match the new auto-advance + ask-question contract
+- Workflow skill family version bumped to `2.1.0`
+
 ## [2.0.0] - 2026-04-01
 
 ### Changed

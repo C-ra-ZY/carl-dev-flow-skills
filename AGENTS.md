@@ -65,7 +65,7 @@ python3 skills/carl-dev-flow-orchestrator/scripts/check-workflow-skills.py
 The checker validates:
 - All seven skill directories exist with a `SKILL.md`
 - Each `SKILL.md` has required YAML frontmatter keys and required values
-- Versions are consistent across the family (currently `2.0.0`)
+- Versions are consistent across the family (currently `2.1.0`)
 - Required wording is present in each skill
 - Forbidden wording is absent
 - Expected Chinese invocation templates and stage skeleton templates exist
@@ -96,7 +96,7 @@ Every skill file uses this structure:
 ---
 name: carl-dev-flow-{slug}
 description: One-line description of the skill.
-version: 2.0.0
+version: 2.1.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
