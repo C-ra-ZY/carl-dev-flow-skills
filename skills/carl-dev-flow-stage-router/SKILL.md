@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-stage-router
 description: Quickly identify the current stage of the Hephaestus-led collaboration workflow and drive the next artifact or decision
-version: 2.0.0
+version: 2.1.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -23,7 +23,7 @@ For Chinese invocation examples, see `templates/zh_CN_INVOCATION.md` and `templa
 3. State which lane should lead next.
 4. `Hephaestus` remains the workflow initiator even when the next active lane is `Oracle` review or `Sisyphus` execution.
 5. Drive the transition forward instead of stopping at summary.
-6. When routing to a new primary stage, use interactive questions to confirm the transition with the user in the same response rather than ending the conversation.
+6. When routing to a new primary stage, enter it automatically when the next stage is clear and no fresh user decision is needed. If user input is still required, use the `ask question` interaction in the same response rather than ending the conversation.
 
 ## Stage classifier
 
@@ -64,3 +64,4 @@ When this skill is loaded, produce a short workflow handoff block with:
 - Do not skip artifact naming.
 - Do not merge requirement questions into implementation planning unless the user explicitly chooses a shortcut.
 - When routing into `recursive-improvement`, keep `Oracle` as the reviewer of record and keep `Hephaestus` as the workflow initiator. Review may not be delegated away from `Oracle`.
+- Do not stop at a stage boundary when the next stage is already determined.

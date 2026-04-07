@@ -17,7 +17,7 @@
 ```text
 请用 carl-dev-flow-stage-router 判断我们当前处于哪个阶段，
 明确：current stage、lead role、current artifact、next artifact、immediate next action，
-然后直接推进下一步，不要只停留在总结。
+然后直接推进下一步，不要只停留在总结。跨 stage 若无新决策阻塞则直接进入下一 stage；只有确实需要我回答时再用 ask question 保持当前会话。
 ```
 
 ## 3. 进入需求澄清阶段
@@ -64,7 +64,7 @@ Oracle 是主要审查者；如需额外专家意见，只能作为顾问性输�
 
 ```text
 请按 workflow 推进，但不要停在分析。
-我要的是可以交付的结果：文档要落地、代码要验证、review 要闭环。
+我要的是可以交付的结果：文档要落地、代码要验证、review 要闭环。跨阶段若条件已满足就自动进入下一 stage，不要把本可自动完成的阶段选择再抛回给我。
 ```
 
 ## 使用建议
