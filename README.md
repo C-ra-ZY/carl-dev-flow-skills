@@ -2,6 +2,8 @@
 
 A reusable AI workflow skill family for the [OpenCode](https://github.com/nicholasgriffintn/opencode) platform. It coordinates a multi-stage collaboration model between a user, **Hephaestus** (orchestration lead), **Oracle** (reviewer/challenger), and **Sisyphus** (technical striker).
 
+The current contract favors automatic cross-stage advancement when the next step is clear, while reserving the `ask question` interaction for true boundary decisions and workflow closeout.
+
 ## What it does
 
 The skill family breaks software delivery into four explicit stages, each with its own artifact lifecycle:
