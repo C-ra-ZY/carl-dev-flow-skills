@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-requirements
 description: Run the requirements-development stage where Hephaestus leads discovery, Oracle reviews, and the user converges on a final requirements document
-version: 2.0.0
+version: 2.1.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -68,7 +68,7 @@ Do not call the document final until:
 - any material implementation-feasibility blocker raised by `Sisyphus` is resolved or explicitly deferred
 - any external advice is treated as advisory only, not as a substitute for `Oracle` review
 
-When promoting the artifact within this stage (draft to revised, or revised to final), proceed automatically when the promotion conditions are clearly met and the user has already expressed agreement. Use interactive questions only when unresolved product or scope decisions still require user input.
+When promoting the artifact within this stage (draft to revised, or revised to final), proceed automatically when the promotion conditions are clearly met and the user has already expressed agreement. Use the `ask question` interaction only when unresolved product or scope decisions still require user input.
 
 ## Artifact location
 
@@ -124,4 +124,4 @@ If the user already has a clear, detailed specification or explicitly asks to sk
 3. Name who authored the current draft, who is reviewing it, and whether `Sisyphus` input is needed.
 4. If no draft exists yet, begin the Pre-draft interrogation procedure.
 5. Drive the next discovery, review, or promotion step forward.
-6. When the requirements document reaches `final` and the stage is complete, use interactive questions to confirm the transition to `technical-confirmation` with the user in the same response.
+6. When the requirements document reaches `final` and the stage is complete, automatically enter `technical-confirmation` when no unresolved product, scope, or shortcut decision remains. If input is still required, use the `ask question` interaction in the same response to keep the workflow moving.

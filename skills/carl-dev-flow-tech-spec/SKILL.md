@@ -1,7 +1,7 @@
 ---
 name: carl-dev-flow-tech-spec
 description: Run the technical-confirmation stage where Hephaestus leads design, Oracle reviews, and the user converges on a final technical spec
-version: 2.0.0
+version: 2.1.0
 compatibility: opencode
 license: CC-BY-4.0
 metadata:
@@ -71,7 +71,7 @@ Do not call the spec final until:
 - any material implementation-feasibility blocker raised by `Sisyphus` is resolved or explicitly deferred
 - any external advice is treated as advisory only, not as a substitute for `Oracle` review
 
-When promoting the artifact within this stage (draft to revised, or revised to final), proceed automatically when the promotion conditions are clearly met and the user has already expressed agreement. Use interactive questions only when unresolved tradeoff, scope, or risk decisions still require user input.
+When promoting the artifact within this stage (draft to revised, or revised to final), proceed automatically when the promotion conditions are clearly met and the user has already expressed agreement. Use the `ask question` interaction only when unresolved tradeoff, scope, or risk decisions still require user input.
 
 ## Artifact location
 
@@ -100,4 +100,4 @@ When this stage is entered as part of a bug-fix workflow (routed from `carl-dev-
 2. Identify whether a draft, revised draft, or final spec exists.
 3. Restate the primary technical decision under review.
 4. Drive the next discussion, review, or promotion step forward.
-5. When the technical spec reaches `final` and the stage is complete, use interactive questions to confirm the transition to `development-execution` with the user in the same response.
+5. When the technical spec reaches `final` and the stage is complete, automatically enter `development-execution` when no unresolved tradeoff, scope, or risk decision remains. If input is still required, use the `ask question` interaction in the same response to keep the workflow moving.
